@@ -2,6 +2,8 @@
 
 ## Platform info
 
+### Last year
+
 [CIVIC Platform DevOps processes](https://github.com/hackoregon/Civic-platform-info/blob/master/devOps-info.md)
 
 * [HackOregon 2017 AWS Infrastructure](https://github.com/hackoregon/hackoregon-aws-infrastructure)
@@ -12,7 +14,7 @@
 
 * [Hack Oregon End Point Service Catalog](https://github.com/hackoregon/endpoint-service-catalog)
 
-New 2018:
+### This year 2018:
 
 * [2018 Repo for Transportation Systems Docker Environment](https://github.com/hackoregon/transportation-systems-docker)
 
@@ -25,3 +27,4 @@ New 2018:
 
 [Hack University DevOps 2017](https://github.com/hackoregon/hacku-devops-2017/wiki)
 
+# How to..

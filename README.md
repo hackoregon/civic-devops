@@ -19,6 +19,7 @@
 ### This year 2018:
 
 * [2018 Repo for Transportation Systems Docker Environment](https://github.com/hackoregon/transportation-systems-docker)
+* [Housing Project](https://github.com/hackoregon/housing-2018)
 
 
 ## Useful stuff

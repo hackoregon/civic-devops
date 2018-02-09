@@ -14,6 +14,8 @@
 
 * [Hack Oregon End Point Service Catalog](https://github.com/hackoregon/endpoint-service-catalog)
 
+* [Monorepo for Civic](https://github.com/hackoregon/civic)
+
 ### This year 2018:
 
 * [2018 Repo for Transportation Systems Docker Environment](https://github.com/hackoregon/transportation-systems-docker)

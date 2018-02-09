@@ -24,7 +24,8 @@
 
 ## Useful stuff
 
-[Vagrant box for Docker](https://github.com/hackoregon/vagrant-for-docker)
+* [Vagrant box for Docker](https://github.com/hackoregon/vagrant-for-docker)
+* [Elasticsearch Project](https://github.com/adpeters/housing-2018)
 
 ## Learning Resources
 

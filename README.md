@@ -20,6 +20,7 @@
 
 * [2018 Repo for Transportation Systems Docker Environment](https://github.com/hackoregon/transportation-systems-docker)
 * [Housing Project](https://github.com/hackoregon/housing-2018)
+* [Election Project)(https://github.com/hackoregon/elections-2018)
 
 
 ## Useful stuff

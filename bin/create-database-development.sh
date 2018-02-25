@@ -8,7 +8,7 @@ mkdir /data/databases # Create data_directory
 sudo service postgresql96 initdb --pgdata=/data/databases
 sudo service postgresql96 start
 # Note: this should prompt for console input to set the 'postgres' OS account password
-# <<CONSOLE INPUT>>
+# <<EXPECT CONSOLE INPUT>>
 sudo -u postgres passwd
 
 # TODO: set the password for the 'postgres' database account
@@ -24,34 +24,34 @@ sudo -u postgres psql --command '\password postgres'
 # 2018 disaster-resilience project
 ROLENAME="disaster-resilience"
 DBNAME_SUFFIX=""
-# <<CONSOLE INPUT>>
+# <<EXPECT CONSOLE INPUT>>
 sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole --no-superuser --no-replication $ROLENAME
 sudo -u postgres createdb -O $ROLENAME ${ROLENAME}-${DBNAME_SUFFIX}
 
 # 2018 housing-affordability project
-ROLENAME=""
+ROLENAME="housing-affordability"
 DBNAME_SUFFIX=""
-# <<CONSOLE INPUT>>
+# <<EXPECT CONSOLE INPUT>>
 sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole --no-superuser --no-replication $ROLENAME
 sudo -u postgres createdb -O $ROLENAME ${ROLENAME}-${DBNAME_SUFFIX}
 
 # 2018 local-elections project
-ROLENAME=""
+ROLENAME="local-elections"
 DBNAME_SUFFIX=""
-# <<CONSOLE INPUT>>
+# <<EXPECT CONSOLE INPUT>>
 sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole --no-superuser --no-replication $ROLENAME
 sudo -u postgres createdb -O $ROLENAME ${ROLENAME}-${DBNAME_SUFFIX}
 
 # 2018 transportation-systems project
-ROLENAME=""
+ROLENAME="transportation-systems"
 DBNAME_SUFFIX=""
-# <<CONSOLE INPUT>>
+# <<EXPECT CONSOLE INPUT>>
 sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole --no-superuser --no-replication $ROLENAME
 sudo -u postgres createdb -O $ROLENAME ${ROLENAME}-${DBNAME_SUFFIX}
 
 # 2018 urban-development project
-ROLENAME=""
+ROLENAME="urban-development"
 DBNAME_SUFFIX=""
-# <<CONSOLE INPUT>>
+# <<EXPECT CONSOLE INPUT>>
 sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole --no-superuser --no-replication $ROLENAME
 sudo -u postgres createdb -O $ROLENAME ${ROLENAME}-${DBNAME_SUFFIX}

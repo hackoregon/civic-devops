@@ -14,9 +14,11 @@ sudo mkdir $DATA_DIRECTORY
 sudo chown postgres $DATA_DIRECTORY
 
 echo "Initializing PostgreSQL..."
-# sudo service postgresql96 initdb --pgdata=/data/databases # This is the usual documented approach but doesn't work in Amazon Linux 2
+sudo -u postgres postgres -c "initdb -D $DATA_DIRECTORY" # suggested by Ed
+#sudo /usr/bin/postgresql-setup --initdb --unit postgresql
+#sudo service postgresql initdb --pgdata=$DATA_DIRECTORY # This is the usual documented approach but use the specified the DATA_DIRECTORY
 #sudo -u postgres initdb --pgdata=$DATA_DIRECTORY
-sudo -u postgres postgresql-setup --initdb --datadir $DATA_DIRECTORY
+#sudo -u postgres postgresql-setup --initdb --datadir $DATA_DIRECTORY
 
 echo "Starting PostgreSQL..."
 sudo service postgresql start # errors out - 'Directory "/var/lib/pgsql/data" is missing or empty.''

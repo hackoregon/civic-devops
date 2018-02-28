@@ -18,13 +18,13 @@ After installation is complete the CLI needs to be configured in order to access
 ```shell
 $ aws configure
 
-AWS Access Key ID [None]: **AKIAIOSFODNN7EXAMPLE**
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
 
-AWS Secret Access Key[None]: **wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY**
+AWS Secret Access Key[None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
-Default region name [None]:**us-west-2**
+Default region name [None]: us-west-2
 
-Default output format [None]: **json**
+Default output format [None]: json
 ```
 
 You do not need to do any additional setup if you choose. 

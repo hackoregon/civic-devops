@@ -3,9 +3,9 @@
 Assume: you're using a *NIX shell (Mac, Linux or Windows 10's WSL)
 Assume: you have the PEM file that was generated when launching the new instance (machine)
 Assume: the PEM file (in this example) is named ec2.pem
-Assume: you have copied the PEM file to your ~/.ssh directory
+Assume: you have copied the PEM file to your \~/.ssh directory
 Assume: the EC2 machine's public DNS name (in this example) is ec2-12-34-567-890.us-west-2.compute.amazonaws.com
-Assume: the target directory for the uploaded file is home (~)
+Assume: the target directory for the uploaded file is home (\~)
 Assume: the local file is stored as ~/uploads/4GBfile.txt
 Assume: the file being copied is < 5GB in size
 

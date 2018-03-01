@@ -11,7 +11,8 @@ sudo yum install postgresql.x86_64 postgresql-server.x86_64 # aliases to postgre
 DATA_DIRECTORY="/data/databases" # Assumes secondary volume is mounted as /data
 
 sudo mkdir $DATA_DIRECTORY
-sudo chown postgres $DATA_DIRECTORY
+sudo chown -R postgres:postgres $DATA_DIRECTORY
+sudo chmod 700 $DATA_DIRECTORY
 
 echo "Initializing PostgreSQL..."
 sudo -u postgres postgres -c "initdb -D $DATA_DIRECTORY" # suggested by Ed

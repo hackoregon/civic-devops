@@ -8,18 +8,35 @@ sudo yum update -y
 sudo amazon-linux-extras install $POSTGRES_PACKAGE # enables postgres9.6 install on Amazon Linux 2
 sudo yum install postgresql.x86_64 postgresql-server.x86_64 # aliases to postgresql 9.6.6-1.amzn2.0.1 as of 2018-02-25
 
-DATA_DIRECTORY="/data/databases" # Assumes secondary volume is mounted as /data
+DATA_DIRECTORY="/databases" # Assumes secondary volume is mounted as /data
 
 sudo mkdir $DATA_DIRECTORY
 sudo chown -R postgres:postgres $DATA_DIRECTORY
 sudo chmod 700 $DATA_DIRECTORY
 
+POSTGRES_OVERRIDE_DIRECTORY="/etc/systemd/system/postgresql.service.d"
+
+# Create the override.conf file to enable postgresql.service to use non-default DATA_DIRECTORY
+sudo echo '[Service]' >> ${POSTGRES_OVERRIDE_DIRECTORY}/override.conf
+sudo echo 'Environment=PGDATA=' $DATA_DIRECTORY >> ${POSTGRES_OVERRIDE_DIRECTORY}/override.conf
+sudo systemctl daemon-reload # reload systemd to read in override.conf
+
+cd / # necessary to work around a permissions issues between sudo and the /home/ec2_user directory
+
 echo "Initializing PostgreSQL..."
-sudo -u postgres postgres -c "initdb -D $DATA_DIRECTORY" # suggested by Ed
-#sudo /usr/bin/postgresql-setup --initdb --unit postgresql
+#sudo su - postgres postgres -c "initdb -D $DATA_DIRECTORY" # suggested by Ed
+sudo /usr/bin/postgresql-setup --initdb --unit postgresql
 #sudo service postgresql initdb --pgdata=$DATA_DIRECTORY # This is the usual documented approach but use the specified the DATA_DIRECTORY
 #sudo -u postgres initdb --pgdata=$DATA_DIRECTORY
 #sudo -u postgres postgresql-setup --initdb --datadir $DATA_DIRECTORY
+
+# >>>>> 
+# >>>>>
+# Alternative: initdb, then copy /var/lib/pgsql/data to /data/databases
+# then change data directory to destination_data_directory within /var/lib/pgsql/data/postgresql.conf
+# then start the service
+# .>>>>
+# >>>>>
 
 echo "Starting PostgreSQL..."
 sudo service postgresql start # errors out - 'Directory "/var/lib/pgsql/data" is missing or empty.''

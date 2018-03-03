@@ -3,7 +3,9 @@
 # Usage: scp this file to [ec2_machine_DNS:~ then run script as ec2user]
 # 
 # Prerequisites:
-# EC2 machine is already created and running
+# EC2 machine using Amazon Linux 2 AMI is already created and running
+# AWS 'amazon-linux-extras' package repo is available
+# EBS volume mounted as `/data` is available in which to store all databases
 
 POSTGRES_PACKAGE="postgresql9.6"
 DATABASE_SERVICE="postgresql"

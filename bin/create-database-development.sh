@@ -7,22 +7,23 @@
 # AWS 'amazon-linux-extras' package repo is available
 # EBS volume mounted as `/data` is available in which to store all databases
 
-POSTGRES_PACKAGE="postgresql9.6"
+DATA_DIRECTORY="/data/databases" # Assumes EBS volume is mounted as /data
 DATABASE_SERVICE="postgresql"
+POSTGRES_OVERRIDE_DIRECTORY="/etc/systemd/system/postgresql.service.d" # Location of override.conf
+POSTGRES_PACKAGE="postgresql9.6" # package installed from amazon-linux-extras repo
 
+echo 'Installing PostgreSQL packages...'
 sudo yum update -y
 sudo amazon-linux-extras install $POSTGRES_PACKAGE # enables postgres9.6 install on Amazon Linux 2
 sudo yum install postgresql.x86_64 postgresql-server.x86_64 # aliases to postgresql 9.6.6-1.amzn2.0.1 as of 2018-02-25
 
-DATA_DIRECTORY="/data/databases" # Assumes EBS volume is mounted as /data
-
+echo 'Creating properly-configured $PGDATA data_directory...'
 sudo mkdir $DATA_DIRECTORY
 # PostgreSQL requires the $PGDATA directory to have exclusive ownership and access
 sudo chown -R postgres:postgres $DATA_DIRECTORY
 sudo chmod 700 $DATA_DIRECTORY
 
-POSTGRES_OVERRIDE_DIRECTORY="/etc/systemd/system/postgresql.service.d"
-
+echo 'Configuring override.conf to use the non-default data_directory...'
 # 'systemctl edit postgresql.service' runs interactively, so this is an alternative to provide an override
 sudo mkdir $POSTGRES_OVERRIDE_DIRECTORY
 #sudo touch $POSTGRES_OVERRIDE_DIRECTORY/override.conf
@@ -37,11 +38,7 @@ sudo systemctl daemon-reload # reload systemd to read in override.conf
 cd / # necessary to work around a permissions issues between sudo and the /home/ec2_user directory
 
 echo "Initializing PostgreSQL..."
-#sudo su - postgres postgres -c "initdb -D $DATA_DIRECTORY" # suggested by Ed
 sudo /usr/bin/postgresql-setup --initdb --unit postgresql
-#sudo service postgresql initdb --pgdata=$DATA_DIRECTORY # This is the usual documented approach but use the specified the DATA_DIRECTORY
-#sudo -u postgres initdb --pgdata=$DATA_DIRECTORY
-#sudo -u postgres postgresql-setup --initdb --datadir $DATA_DIRECTORY
 
 echo "Configuring PostgreSQL to listen for all incoming IP addresses..."
 echo '' | sudo tee -a ${DATA_DIRECTORY}/postgresql.conf
@@ -57,16 +54,7 @@ sudo systemctl enable ${DATABASE_SERVICE}.service # 'sudo service $DATABASE_SERV
 echo "Starting PostgreSQL..."
 sudo service $DATABASE_SERVICE start
 
-# TODO: is it *less* secure to set a password for this account?
-#echo "Setting password for OS account postgres..."
-#sudo -u postgres passwd
-
-# TODO: set the password for the 'postgres' database account
 echo "Setting password for postgres database account..."
-# This approach is untested
-#read -p "Setting password for DB user postgres - type in the password:" DB_password
-#sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '$DB_password';"
-# -OR-
 sudo -u postgres psql --command '\password postgres'
 
 # Create databases and their roles
@@ -116,5 +104,5 @@ sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole
 sudo -u postgres createdb -O $ROLENAME $DBNAME_FULL
 
 
-# HUP the database service in case any .conf files were altered since last start
+echo "HUP the database service in case any .conf files were altered since last start..."
 sudo -u postgres pg_ctl reload --pgdata=${DATA_DIRECTORY} # sends SIGHUP to postgres server

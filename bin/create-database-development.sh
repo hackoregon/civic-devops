@@ -23,16 +23,12 @@ sudo mkdir $DATA_DIRECTORY
 sudo chown -R postgres:postgres $DATA_DIRECTORY
 sudo chmod 700 $DATA_DIRECTORY
 
+# 'systemctl edit postgresql.service' runs interactively - this approach commits changes to the file without interaction
 echo 'Configuring override.conf to use the non-default data_directory...'
-# 'systemctl edit postgresql.service' runs interactively, so this is an alternative to provide an override
 sudo mkdir $POSTGRES_OVERRIDE_DIRECTORY
-#sudo touch $POSTGRES_OVERRIDE_DIRECTORY/override.conf
-# Create the override.conf file to enable postgresql.service to use non-default DATA_DIRECTORY
-# NOTE: https://superuser.com/questions/136646/how-to-append-to-a-file-as-sudo#136653 explains how to gain write permission as the non-shell user
-echo '' | sudo tee -a $POSTGRES_OVERRIDE_DIRECTORY/override.conf
+echo '' | sudo tee -a $POSTGRES_OVERRIDE_DIRECTORY/override.conf # https://superuser.com/questions/136646/how-to-append-to-a-file-as-sudo#136653 explains how 'tee' enables write permission as the non-shell user
 echo '[Service]' | sudo tee -a $POSTGRES_OVERRIDE_DIRECTORY/override.conf
 echo 'Environment=PGDATA='$DATA_DIRECTORY | sudo tee -a $POSTGRES_OVERRIDE_DIRECTORY/override.conf
-#sudo cp --no-preserve=mode,ownership override.conf $POSTGRES_OVERRIDE_DIRECTORY
 sudo systemctl daemon-reload # reload systemd to read in override.conf
 
 cd / # necessary to work around a permissions issues between sudo and the /home/ec2_user directory
@@ -62,7 +58,7 @@ sudo -u postgres psql --command '\password postgres'
 # e.g. createdb -O transportation-systems transportation-systems-conflicts
 # TODO: investigate PostgreSQL Roles to determine if there's any advantage over assigning ownership to the Database
 
-# 2018 disaster-resilience project
+# Database(s) for 2018 disaster-resilience project
 ROLENAME="disaster-resilience"
 DBNAME_SUFFIX=""
 DBNAME_FULL=${ROLENAME}-${DBNAME_SUFFIX}
@@ -71,7 +67,7 @@ sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole
 sudo -u postgres createdb -O $ROLENAME $DBNAME_FULL
 #echo -e 'host ' ${DBNAME_FULL} ' ' ${ROLENAME} ' 0.0.0.0/0 md5' | sudo tee -a ${DATA_DIRECTORY}/pg_hba.conf
 
-# 2018 housing-affordability project
+# Database(s) for Project: 2018 housing-affordability project
 ROLENAME="housing-affordability"
 DBNAME_SUFFIX=""
 DBNAME_FULL=${ROLENAME}-${DBNAME_SUFFIX}
@@ -79,7 +75,7 @@ echo "Creating DB user $ROLENAME - prompts for password..."
 sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole --no-superuser --no-replication $ROLENAME
 sudo -u postgres createdb -O $ROLENAME $DBNAME_FULL
 
-# 2018 local-elections project
+# Database(s) for 2018 local-elections project
 ROLENAME="local-elections"
 DBNAME_SUFFIX=""
 DBNAME_FULL=${ROLENAME}-${DBNAME_SUFFIX}
@@ -87,7 +83,7 @@ echo "Creating DB user $ROLENAME - prompts for password..."
 sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole --no-superuser --no-replication $ROLENAME
 sudo -u postgres createdb -O $ROLENAME $DBNAME_FULL
 
-# 2018 transportation-systems project
+# Database(s) for 2018 transportation-systems project
 ROLENAME="transportation-systems"
 DBNAME_SUFFIX=""
 DBNAME_FULL=${ROLENAME}-${DBNAME_SUFFIX}
@@ -95,7 +91,7 @@ echo "Creating DB user $ROLENAME - prompts for password..."
 sudo -u postgres createuser --encrypted --pwprompt --no-createdb --no-createrole --no-superuser --no-replication $ROLENAME
 sudo -u postgres createdb -O $ROLENAME $DBNAME_FULL
 
-# 2018 urban-development project
+# Database(s) for 2018 urban-development project
 ROLENAME="urban-development"
 DBNAME_SUFFIX=""
 DBNAME_FULL=${ROLENAME}-${DBNAME_SUFFIX}

@@ -28,7 +28,7 @@ if [ "$#" -eq 3 ]; then
 	DB_NAME=$1
 	USERNAME=$2
 	PASSWORD=$3
-	SET_PWD_COMMAND="\"ALTER USER ${USERNAME} ENCRYPTED PASSWORD \'${PASSWORD}\';\""
+	SET_PWD_COMMAND="\"ALTER USER ${USERNAME} ENCRYPTED PASSWORD ""'""${PASSWORD}""'"";\""
 	sudo -u postgres createuser --encrypted --no-createdb --no-createrole --no-superuser --no-replication $USERNAME
 	sudo -u postgres psql -c ${SET_PWD_COMMAND}
 elif [ "$#" -eq 0 ]; then

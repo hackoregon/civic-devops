@@ -33,7 +33,7 @@
 
 [Hack University DevOps 2017](https://github.com/hackoregon/hacku-devops-2017/wiki)
 
-# How to..
+# How to...
 
-* [Uploading files 5GB or greater to AWS S3](https://github.com/hackoregon/civic-devops/blob/s3-upload-guides/docs/HOWTO-upload-large-files-to-S3.md)
-* [Uploading files to AWS S3 less than 5GB in size](https://github.com/hackoregon/civic-devops/blob/s3-upload-guides/docs/HOWTO-upload-small-files-to-S3.md)
+* [Upload files to AWS S3 less than 5GB in size](https://github.com/hackoregon/civic-devops/blob/s3-upload-guides/docs/HOWTO-upload-small-files-to-S3.md)
+* [Upload files 5GB or greater to AWS S3](https://github.com/hackoregon/civic-devops/blob/s3-upload-guides/docs/HOWTO-upload-large-files-to-S3.md)

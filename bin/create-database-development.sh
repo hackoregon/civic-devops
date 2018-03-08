@@ -3,25 +3,25 @@
 # Usage: scp this file to [ec2_machine_DNS:~ then run script as ec2user]
 # 
 # Prerequisites:
-# This EC2 instance is created with EBS volume named /dev/sdf
+# This EC2 instance is created with an Amazon Linux 2 AMI with EBS volume named /dev/sdf
 # AWS 'amazon-linux-extras' package repo is available
 # EBS volume mounted as `/data` is available in which to store all databases
 
 
 DATA_DIRECTORY="/data/databases"
 DATABASE_SERVICE="postgresql"
+DEVICE_NAME="/dev/sdf" # Assume the EBS volume is configured as /dev/sdf
+MOUNT_POINT="/data"
 POSTGRES_OVERRIDE_DIRECTORY="/etc/systemd/system/postgresql.service.d"
 POSTGRES_PACKAGE="postgresql9.6" # package installed from amazon-linux-extras repo
 
-MOUNT_POINT="/data"
-DEVICE_NAME="/dev/sdf" # Assume the EBS volume is configured as /dev/sdf
 
 echo 'Installing PostgreSQL packages...'
 sudo yum update -y
 sudo amazon-linux-extras install $POSTGRES_PACKAGE # enables postgres9.6 install on Amazon Linux 2
 sudo yum install postgresql.x86_64 postgresql-server.x86_64 -y # aliases to postgresql 9.6.6-1.amzn2.0.1 as of 2018-02-25
 
-echo 'Mounting EBS volume '"$DEVICE_NAME"' as '"$MOUNT_POINT"
+echo 'Mounting EBS volume '"$DEVICE_NAME"' as '"$MOUNT_POINT..."
 sudo mkfs -t ext4 $DEVICE_NAME
 sudo mkdir $MOUNT_POINT
 sudo mount -t ext4 $DEVICE_NAME $MOUNT_POINT

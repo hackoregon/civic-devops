@@ -15,7 +15,7 @@ POSTGRES_PACKAGE="postgresql9.6" # package installed from amazon-linux-extras re
 echo 'Installing PostgreSQL packages...'
 sudo yum update -y
 sudo amazon-linux-extras install $POSTGRES_PACKAGE # enables postgres9.6 install on Amazon Linux 2
-sudo yum install postgresql.x86_64 postgresql-server.x86_64 # aliases to postgresql 9.6.6-1.amzn2.0.1 as of 2018-02-25
+sudo yum install postgresql.x86_64 postgresql-server.x86_64 -y # aliases to postgresql 9.6.6-1.amzn2.0.1 as of 2018-02-25
 
 echo 'Creating properly-configured $PGDATA data_directory...'
 sudo mkdir $DATA_DIRECTORY

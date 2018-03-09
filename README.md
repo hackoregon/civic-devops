@@ -22,6 +22,7 @@
 * [Housing Project](https://github.com/hackoregon/housing-2018)
 * [Election Project](https://github.com/hackoregon/elections-2018)
 * [Disaster Resilience](https://github.com/hackoregon/disaster-resilience)
+* [Neighborhood](https://github.com/hackoregon/neighborhoods-2018)
 
 
 ## Useful stuff

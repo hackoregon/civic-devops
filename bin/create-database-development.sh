@@ -12,7 +12,7 @@ DATA_DIRECTORY="/data/databases"
 DATABASE_SERVICE="postgresql"
 DEVICE_NAME="/dev/sdf" # Assume the EBS volume is configured as /dev/sdf
 MOUNT_POINT="/data"
-POSTGRES_OVERRIDE_DIRECTORY="/etc/systemd/system/postgresql.service.d"
+POSTGRES_OVERRIDE_DIRECTORY="/etc/systemd/system/postgresql.service.d" # Location of override.conf
 POSTGRES_PACKAGE="postgresql9.6" # package installed from amazon-linux-extras repo
 
 

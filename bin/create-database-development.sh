@@ -9,7 +9,7 @@
 # EBS volume mounted as `/data` is available in which to store all databases
 
 
-DATA_DIRECTORY="/data/databases"
+DATA_DIRECTORY="/data/postgresql/databases" #two directories deep to avoid PostgreSQL "direct mountpoint" warning - see http://www.postgresql.org/docs/9.6/static/creating-cluster.html
 DATABASE_SERVICE="postgresql"
 DEVICE_NAME="/dev/sdb" # Assume the EBS volume is configured as /dev/sdb
 MOUNT_POINT="/data"

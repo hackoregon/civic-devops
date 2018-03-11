@@ -3,14 +3,15 @@
 # Usage: scp this file to [ec2_machine_DNS:~ then run script as ec2user]
 # 
 # Prerequisites:
-# This EC2 instance is created with an Amazon Linux 2 AMI with EBS volume named /dev/sdf
+# This EC2 instance is created with an Amazon Linux 2 AMI
+# EC2 instance is created from scratch, not a pre-existing server, so EBS volume named /dev/sdb should never collide
 # AWS 'amazon-linux-extras' package repo is available
 # EBS volume mounted as `/data` is available in which to store all databases
 
 
 DATA_DIRECTORY="/data/databases"
 DATABASE_SERVICE="postgresql"
-DEVICE_NAME="/dev/sdf" # Assume the EBS volume is configured as /dev/sdf
+DEVICE_NAME="/dev/sdb" # Assume the EBS volume is configured as /dev/sdb
 MOUNT_POINT="/data"
 POSTGRES_OVERRIDE_DIRECTORY="/etc/systemd/system/postgresql.service.d" # Location of override.conf
 POSTGRES_PACKAGE="postgresql9.6" # package installed from amazon-linux-extras repo

@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+# TODO: change the VolumeType if necessary
+# TODO: disable DeleteOnTermination
+
 # if [ "$#" -ne 1 ]; then
 #     echo "Must has 1 argument as instance name"
 #     exit 1
@@ -25,6 +28,6 @@ aws ec2 run-instances \
    --security-group-ids $SECURITYGROUPIDS \
    --subnet-id $SUBNETID\
    --region $REGION \
-   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":8,\"DeleteOnTermination\":true}}]" \
+   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":8,\"VolumeType\":\"gp2\",\"DeleteOnTermination\":true}}]" \
    --tag-specifications $tag_specs \
    --query 'Instances[0].InstanceId'

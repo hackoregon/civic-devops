@@ -28,7 +28,8 @@ if [ "$#" -eq 5 ]; then
          --username $USERNAME \
          --no-password \
          --dbname $DATABASE_NAME \
-         --verbose $BACKUP_FILE
+         --verbose \
+         $BACKUP_FILE
 
 elif [ "$#" -eq 0 ]; then
 	# Running interatively (no arguments)
@@ -44,7 +45,8 @@ elif [ "$#" -eq 0 ]; then
          --username $USERNAME \
          --no-password \
          --dbname $DATABASE_NAME \
-         --verbose $BACKUP_FILE
+         --verbose \
+         $BACKUP_FILE
 
 else
     # TODO: clean up this branch

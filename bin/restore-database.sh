@@ -13,12 +13,8 @@
 # - Postgres has been configured and started
 # - Admin-level permissions to the database
 # - Database instance is configured with Owner access for the user context
-# - awscli tools installed to access s3:// paths
 
 # TODO: figure out how to authenticate from EC2 box to S3 bucket
-
-# Install AWSCLI
-
 
 if [ "$#" -eq 5 ]; then
 	# Running with 5 arguments
@@ -35,8 +31,7 @@ if [ "$#" -eq 5 ]; then
          --username $USERNAME \
          --no-password \
          --dbname $DATABASE_NAME \
-         --verbose 
-         $BACKUP_FILE # eg. s3://bucket-name/folder/filename.backup or https://s3-us-west-2.amazonaws.com/hacko-data-archvie/passenger_census.backup
+         --verbose $BACKUP_FILE
 
 elif [ "$#" -eq 0 ]; then
 	# Running interatively (no arguments)
@@ -52,8 +47,7 @@ elif [ "$#" -eq 0 ]; then
          --username $USERNAME \
          --no-password \
          --dbname $DATABASE_NAME \
-         --verbose \
-         $BACKUP_FILE
+         --verbose $BACKUP_FILE
 
 else
     # TODO: clean up this branch

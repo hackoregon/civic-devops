@@ -15,7 +15,9 @@ fi
 # SECURITYGROUPIDS='sg-28154957'
 # SUBNETID='subnet-8794fddf'
 # VOLUMESIZE='8'
-source ./my-ec2-profile.sh
+
+EC2PROFILE='./ec2-profile.sh'
+source $EC2PROFILE
 
 instance_name=$1
 tag_specs='ResourceType=instance,Tags=[{Key=Name,Value='$instance_name'}]'

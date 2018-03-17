@@ -6,6 +6,7 @@ This set of scripts and procedures is how we built the PostgreSQL database servi
 2. Install and configure PostgreSQL
 3. Create users and databases
 4. Restore databases from backup
+5. Extend the EBS data volume for new databases
 
 ## Build an EC2 machine
 
@@ -56,3 +57,11 @@ There are two scenarios: `.backup` file that was generated from `pgdump` native 
 * Step 3: run `gzip -dc BACKUP_FILE.sql.gz | sudo -u postgres psql`
 * Step 4: test that the restore succeeded (i.e. the database is not still empty) by running `sudo -u postgres psql -d [DATABASE_INSTANCE] -c 'SELECT COUNT(*) FROM [DATABASE_INSTANCE/TABLE_NAME];'` where [DATABASE_INSTANCE] is the database instance name e.g. `sudo -u postgres psql -d passenger_census -c 'SELECT COUNT(*) FROM passenger_census;'`
 * Note: the test command should result in a non-zero count
+
+# Extend the EBS data volume for new databases
+
+EBS volumes are allocated statically for EC2 machines - that is, if you need to allow your data files to grow to 500GB, then you need to explicitly allocate 500GB to the EBS volume housing those data files.
+
+Since EBS space isn't free, Hack Oregon is working to allocate only as much space as is needed for the existing databases.  When a new database instance is added, chances are the EBS volume needs to be "grown" to accommodate the new space requirements.
+
+(Procedure document forthcoming from Ian )

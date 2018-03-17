@@ -4,6 +4,8 @@ When standing up a new database instance, the project team must submit that data
 
 ## Requirements
 
+These are the current requirements for submitting a database backup to the Hack Oregon DevOps squad that can be successfully used to perform the initial load of a new database instance.
+
 * Coordinate with the Hack Oregon DevOps squad to finalize the name of the database instance and acquire the username that will own that database instance
 * Generate a `pgdump` backup using one of two methods:
 * * the procedure that results in `.backup` file in native pgdump format

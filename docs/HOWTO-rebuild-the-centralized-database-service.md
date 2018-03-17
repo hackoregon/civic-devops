@@ -54,5 +54,5 @@ There are two scenarios: `.backup` file that was generated from `pgdump` native 
 * Step 1: `ssh` into the machine hosting the PostgreSQL service as `ec2-user` (or equivalent)
 * Step 2: run wget to download the backup file e.g. `wget https://s3-us-west-2.amazonaws.com/hacko-data-archive/2018-transportation-systems/data/interim/passenger_census.backup`
 * Step 3: run `gzip -dc BACKUP_FILE.sql.gz | sudo -u postgres psql`
-* Step 4: test that the restore succeeded (i.e. the database is not still empty) by running `sudo -u postgres psql -d [DATABASE_INSTANCE] -c 'SELECT COUNT(*) FROM [DATABASE_INSTANCE/TABLE_NAME];' where [DATABASE_INSTANCE] is the database instance name
+* Step 4: test that the restore succeeded (i.e. the database is not still empty) by running `sudo -u postgres psql -d [DATABASE_INSTANCE] -c 'SELECT COUNT(*) FROM [DATABASE_INSTANCE/TABLE_NAME];'` where [DATABASE_INSTANCE] is the database instance name e.g. `sudo -u postgres psql -d passenger_census -c 'SELECT COUNT(*) FROM passenger_census;'`
 * Note: the test command should result in a non-zero count

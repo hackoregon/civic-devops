@@ -5,14 +5,16 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-DEVICENAME='/dev/sdb'
-IMAGEID='ami-7f43f307'
-INSTANCETYPE='t2.micro'
-KEYNAME='hackoregon-2018-database-dev-env'
-REGION='us-west-2'
-SECURITYGROUPIDS='sg-28154957'
-SUBNETID='subnet-8794fddf'
-VOLUMESIZE='8'
+# Source ec2 specs from a separate file
+# The ./ec2-profile.sh should contain the following variables
+# DEVICENAME='/dev/sdb'
+# IMAGEID='ami-7f43f307'
+# INSTANCETYPE='t2.micro'
+# KEYNAME='hackoregon-2018-database-dev-env'
+# REGION='us-west-2'
+# SECURITYGROUPIDS='sg-28154957'
+# SUBNETID='subnet-8794fddf'
+# VOLUMESIZE='8'
 
 EC2PROFILE='./ec2-profile-1.sh'
 source $EC2PROFILE

@@ -24,6 +24,8 @@
 #   the flag `--iam-instance-profile Name=$INSTANCE_PROFILE_NAME `, where
 #   the $INSTANCE_PROFILE_NAME is the instance profile that was once created 
 #   by running `create-instance-profile.sh`
+# - The policy of s3 also allows ec2 to read from its buckets and files, 
+#   e.g. the 'action' s3:ListBucket, s3:GetObject, etc. for those desire buckets, folders, and objects file
 
 DATABASE_NAME=
 USERNAME=

@@ -8,6 +8,7 @@ fi
 DEVICENAME='/dev/sdb'
 IMAGEID='ami-7f43f307'
 INSTANCETYPE='t2.micro'
+INSTANCE_PROFILE_NAME='s3access-profile'
 KEYNAME='hackoregon-2018-database-dev-env'
 REGION='us-west-2'
 SECURITYGROUPIDS='sg-28154957'
@@ -24,6 +25,7 @@ aws ec2 run-instances \
    --image-id $IMAGEID \
    --count 1 \
    --instance-type $INSTANCETYPE \
+   --iam-instance-profile Name=$INSTANCE_PROFILE_NAME \
    --key-name $KEYNAME \
    --security-group-ids $SECURITYGROUPIDS \
    --subnet-id $SUBNETID\

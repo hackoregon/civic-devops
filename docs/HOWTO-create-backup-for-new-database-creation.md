@@ -18,21 +18,21 @@ These are the current requirements for submitting a database backup to the Hack 
 
     ```
     ALTER DATABASE odot_crash_data OWNER TO "transportation-systems";
-    REASSIGN OWNED BY postgres TO "transportation-systems";
+    REASSIGN OWNED BY znmeb TO "transportation-systems";
     ```
 
     Note: the double quotes are required because of the hyphen in the new owner's name.
 4. Command to create a compressed text backup:
 
     ```
-    pg_dump -Fp -v -C --if-exists -d <database> \
+    pg_dump -Fp -v -C -c --if-exists -d <database> \
     | gzip -c > <database>.sql.gz
     ```
 
     `<database>` is the database. Run this as the database superuser `postgres` on Linux. The parameters:
     * `-Fp`: plain text format
     * `-v`: verbose
-    * `-C`: create a fresh new database. This is done by DROPping the database. If it doesn't exist, the DROP will error, so ...
+    * `-C -c`: create a clean new database. This is done by DROPping the database objects. If they doesn't exist, the DROP will error, so ...
     * `--if-exists`: don't DROP if it doesn't exist. You'll get a `NOTICE` instead of an `ERROR` and the restore will continue!
 5. Command to restore the compressed backup:
 

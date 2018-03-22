@@ -33,7 +33,7 @@ aws ec2 run-instances \
    --security-group-ids $SECURITYGROUPIDS \
    --subnet-id $SUBNETID\
    --region $REGION \
-   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":8,\"DeleteOnTermination\":true}}]" \
+   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":8,\"VolumeType\":\"gp2\",\"DeleteOnTermination\":true}}]" \
    --tag-specifications $tag_specs \
    --query 'Instances[0].InstanceId' \
     > $instance_id_file

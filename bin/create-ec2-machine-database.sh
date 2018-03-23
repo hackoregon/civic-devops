@@ -1,5 +1,13 @@
 #!/bin/bash -e
 
+# Parameters:
+# - $1 : Instance's name
+# - $2 : Path to instance profile
+
+# Result:
+# - Launch a ec2 instance named $1, with the specs/profile provided in the file located at $2
+# - Output the public ip address of the instance
+
 if [ "$#" -ne 1 ]; then
     echo "Must has 1 argument as instance tag name"
     exit 1
@@ -16,7 +24,7 @@ fi
 # SUBNETID='subnet-8794fddf'
 # VOLUMESIZE='8'
 
-EC2PROFILE='./ec2-profile-1.sh'
+EC2PROFILE=$2
 source $EC2PROFILE
 
 instance_name=$1

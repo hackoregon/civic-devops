@@ -30,11 +30,13 @@ Run the `lsblk` command with no arguments  and locate the information for the at
 
 You can run commands on the EC2 Instance either locally, after `ssh` into the EC2 Instance the Volume is attached to (to get a remote shell on the Instance), or run commands remotely as parameters to an `ssh` command running locally:
 
-- e.g. `ssh -i ec2-key.pem  ec2-user@xx.xx.xx.xx  'lsblk'`)
+- e.g. `ssh -i ec2-key.pem  ec2-user@xx.xx.xx.xx  'lsblk'`
 
 - the `-i` argument specifies the path to the secret key file for the key used with the ec2 instance
 
-- the <user>@<xx.xx.xx.xx> is the user and IP address of the instance and the command to run on the remote Instance is the item in the single quotes
+- the `<user>@<xx.xx.xx.xx>` is the user and IP address of the Instance
+
+- the command (e.g. `'lsblk'`) is what you're going to run on the remote Instance
 
 The `lsblk` information will indicate the Linux device name, the mount point (e.g. `/data/pgdata`) and whether it is an entire disk or if the disk has been partitioned. For now we will assume it is not partitioned and the filesystem will be increased to use the entire space of the Volume.  If the Volume is partitioned you will need to use the `gdisk` command to extend the partition before extending the filesystem.
 

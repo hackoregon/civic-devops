@@ -45,7 +45,7 @@
 
 ```
 
-## How this Policy Example Works
+## How this Policy Works
 
 Below is a lifecycle policy that can be applied to a bucket. It consists of three rules that will be applied to objects held in the Bucket. The first rule will look for all objects that have the tag `Archive` with a value of `maybe`. Objects found with this tag/value combination that have not been modified in 35 days will be moved to storage class "Infrequent Access" which is half the cost of the default "Standard" S3 storage.
 

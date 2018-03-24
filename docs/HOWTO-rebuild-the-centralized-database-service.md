@@ -64,4 +64,4 @@ EBS volumes are allocated statically for EC2 machines - that is, if you need to 
 
 Since EBS space isn't free, Hack Oregon is working to allocate only as much space as is needed for the existing databases.  When a new database instance is added, chances are the EBS volume needs to be "grown" to accommodate the new space requirements.
 
-(Procedure document forthcoming from Ian )
+Detailed instructions on how to [increase the space on the data volume can be found here](https://github.com/hackoregon/civic-devops/blob/master/docs/HOWTO-extend-EBS-Volume-size.md).

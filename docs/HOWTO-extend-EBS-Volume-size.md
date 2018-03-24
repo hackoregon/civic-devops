@@ -75,7 +75,7 @@ fsadm: Cannot proceed with mounted filesystem "/data".
 
 Thus the "busying" process will have to be terminated.  In the case of a service such as PostgreSQL, it can be shut down by use of a command such as `sudo service postgresql stop`. (Remember to `start` it again when this is all done.)
 
-(TODO)
+NOTE: it's unclear whether `service postgresql stop` will wait until in-progress transactions are finished before shutting down the daemon.  Further research is needed.
 
 ### Procedure to Extend
 
@@ -114,7 +114,7 @@ fsadm: Remounting unmounted filesystem back
 fsadm: Executing mount /dev/xvdb /data
 ```
 
-Once the resize has completed, the filesystem is remounted (if previously mounted). You can also manually mount the filesyste for use using the `mount` command (e.g. `mount xvdb /data`).
+Once the resize has completed, the filesystem is remounted (if previously mounted). You can also manually mount the filesystem for use using the `mount` command (e.g. `mount xvdb /data`).
 
 Use the `lsblk` command to check that the filesystem size has increased properly.  Note: it will not exactly match the size of the Volume due to space needed for filesystem overhead.
 

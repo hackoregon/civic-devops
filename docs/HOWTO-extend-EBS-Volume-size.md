@@ -18,13 +18,23 @@ With the Volume selected on the AWS console, click the “**Actions**” drop do
 
 In the Description tab of the Volume it will show the "**State**" of the operation - you may need to refresh the screen (circular arrows in to right of screen) to see the current status. 
 
-When this operation has completed, the next step is to extend the filesystem.
+When this operation has completed ("**State**" again reports `in-use`), the next step is to extend the filesystem.
 
 ## Extend the filesystem
 
-To extend the filesystem, `ssh` into the EC2 Instance the Volume is attached to and use the `sudo su` command to have the proper permissions or run commands remotely using `ssh`  (e.g. `ssh -i ec2-key.pem  ec2-user@xx.xx.xx.xx  'lsblk'`).  The -i argument specifies the path to the secret key file for the key used with the ec2 instance. The <user>@<xx.xx.xx.xx> is the user and IP address of the instance and the command to run on the remote Instance is the item in the single quotes.
+To extend the filesystem, you'll first have to verify which device is being extended.
+
+### Procedure to Verify
 
 Run the `lsblk` command with no arguments  and locate the information for the attached Volume (note: Linux may have remapped the device name, so it may not match the device name from the Volume “Attachment information” from the AWS console)
+
+You can run commands on the EC2 Instance either locally, after `ssh` into the EC2 Instance the Volume is attached to (to get a remote shell on the Instance), or run commands remotely as parameters to an `ssh` command running locally:
+
+- e.g. `ssh -i ec2-key.pem  ec2-user@xx.xx.xx.xx  'lsblk'`)
+
+- the `-i` argument specifies the path to the secret key file for the key used with the ec2 instance
+
+- the <user>@<xx.xx.xx.xx> is the user and IP address of the instance and the command to run on the remote Instance is the item in the single quotes
 
 The `lsblk` information will indicate the Linux device name, the mount point (e.g. `/data/pgdata`) and whether it is an entire disk or if the disk has been partitioned. For now we will assume it is not partitioned and the filesystem will be increased to use the entire space of the Volume.  If the Volume is partitioned you will need to use the `gdisk` command to extend the partition before extending the filesystem.
 

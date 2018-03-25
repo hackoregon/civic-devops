@@ -5,15 +5,16 @@
 # - $2 : Path to instance profile
 
 # Result:
-# - Launch a ec2 instance named $1, with the specs/profile provided in the file located at $2
-# - Output the public ip address of the instance
+# - Launch an EC2 instance named $1, with the specs/profile provided in the file located at $2
+# - Output the public IP address of the instance
 
-if [ "$#" -ne 1 ]; then
-    echo "Must has 1 argument as instance tag name"
+if [ "$#" -ne 2 ]; then
+    echo "Must provide 2 arguments as (a) instance tag=Name and (b) path to instance profile script"
+    echo "e.g. ./create-ec2-machine-database.sh HackO-Developer-Database ec2-profile-database-developer.sh"
     exit 1
 fi
 
-# Source ec2 specs from a separate file
+# Source EC2 specs from a separate file
 # The ./ec2-profile.sh should contain the following variables
 # DEVICENAME='/dev/sdb'
 # IMAGEID='ami-7f43f307'
@@ -25,14 +26,14 @@ fi
 # VOLUMESIZE='8'
 
 EC2PROFILE=$2
+INSTANCE_ID=
+INSTANCE_ID_FILE='./tmp_instance_id'
+INSTANCE_NAME=$1
+TAG_SPECS='ResourceType=instance,Tags=[{Key=Name,Value='$INSTANCE_NAME'}]'
+
 source $EC2PROFILE
 
-instance_name=$1
-tag_specs='ResourceType=instance,Tags=[{Key=Name,Value='$instance_name'}]'
-instance_id_file='./tmp_instance_id'
-instance_id=
-
-echo "Launching the ec2 "\"$instance_name\"" instance..."
+echo "Launching the ec2 "\"$INSTANCE_NAME\"" instance..."
 aws ec2 run-instances \
    --image-id $IMAGEID \
    --count 1 \
@@ -42,19 +43,19 @@ aws ec2 run-instances \
    --subnet-id $SUBNETID\
    --region $REGION \
    --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":8,\"VolumeType\":\"gp2\",\"DeleteOnTermination\":true}}]" \
-   --tag-specifications $tag_specs \
+   --tag-specifications $TAG_SPECS \
    --query 'Instances[0].InstanceId' \
-    > $instance_id_file
+    > $INSTANCE_ID_FILE
 
 echo "New instance'id: "
-cat $instance_id_file
+cat $INSTANCE_ID_FILE
 
 echo "Getting the public ip address of the new instance..."
-instance_id=$( cat $instance_id_file )
-instance_id=$( echo $instance_id | cut -c 2- | rev | cut -c 2- | rev ) # trim off the surrounding double quotes
-echo "instance id= "$instance_id
+INSTANCE_ID=$( cat $INSTANCE_ID_FILE )
+INSTANCE_ID=$( echo $INSTANCE_ID | cut -c 2- | rev | cut -c 2- | rev ) # trim off the surrounding double quotes
+echo "instance id= "$INSTANCE_ID
 aws ec2 describe-instances \
-    --instance-ids $instance_id \
+    --instance-ids $INSTANCE_ID \
     --query 'Reservations[0].Instances[0].PublicIpAddress'
 
-rm -f $instance_id_file
+rm -f $INSTANCE_ID_FILE

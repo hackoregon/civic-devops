@@ -116,6 +116,16 @@ fsadm: Executing mount /dev/xvdb /data
 
 Once the resize has completed, the filesystem is remounted (if previously mounted). You can also manually mount the filesystem for use using the `mount` command (e.g. `mount xvdb /data`).
 
-Use the `lsblk` command to check that the filesystem size has increased properly.  Note: it will not exactly match the size of the Volume due to space needed for filesystem overhead.
+Use the `lsblk` command to check that the filesystem size has increased properly, e.g.
+
+```
+$ sudo lsblk
+NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0   8G  0 disk 
+└─xvda1 202:1    0   8G  0 part /
+xvdb    202:16   0  13G  0 disk /data
+```
+
+Note: it will not exactly match the size of the Volume due to space needed for filesystem overhead.
 
 ALSO: don't forget to restart any "busying" processes that were temporarily shut down - e.g. `sudo service postgresql start`

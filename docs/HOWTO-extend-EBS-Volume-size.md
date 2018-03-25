@@ -26,7 +26,7 @@ To extend the filesystem, you'll first have to verify which device is being exte
 
 ### Procedure to Verify
 
-Run the `lsblk` command with no arguments  and locate the information for the attached Volume (note: Linux may have remapped the device name, so it may not match the device name from the Volume “Attachment information” from the AWS console).  Example output:
+Run the `lsblk` command with no arguments to get the NAME for the attached Volume (note: Linux may have remapped the device name, so it may not match the device name from the Volume “Attachment information” from the AWS console).  Example output:
 
 ```
 $ lsblk
@@ -47,6 +47,23 @@ You can run commands like this on the EC2 Instance either from a shell running o
 - the `<user>@<xx.xx.xx.xx>` is the user and IP address of the Instance
 
 - the command (e.g. `'lsblk'`) is what you're going to run on the remote Instance
+
+You'll notice that the SIZE is already quoting the new extended size.  To verify the current filesystem-level allocation of space, run the `df -h` command, with such output as this:
+
+```
+$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        484M     0  484M   0% /dev
+tmpfs           497M  4.0K  497M   1% /dev/shm
+tmpfs           497M   13M  484M   3% /run
+tmpfs           497M     0  497M   0% /sys/fs/cgroup
+/dev/xvda1      8.0G  1.2G  6.9G  15% /
+tmpfs           100M     0  100M   0% /run/user/0
+tmpfs           100M     0  100M   0% /run/user/1000
+/dev/xvdb       7.8G  252M  7.1G   4% /data
+```
+
+You should notice that the Size of `/dev/xvdb` is still only 7.8G (which is its original size).
 
 ### Procedure to make sure filesystem isn't Busy
 
@@ -73,9 +90,9 @@ umount: /data: target is busy.
 fsadm: Cannot proceed with mounted filesystem "/data".
 ```
 
-Thus the "busying" process will have to be terminated.  In the case of a service such as PostgreSQL, it can be shut down by use of a command such as `sudo service postgresql stop`. (Remember to `start` it again when this is all done.)
+Thus the "busying" process will have to be terminated.  In the case of a service such as PostgreSQL, it can be shut down by use of a command such as `sudo systemctl stop postgresql`. (Remember to `start` it again when this is all done.)
 
-NOTE: it's unclear whether `service postgresql stop` will wait until in-progress transactions are finished before shutting down the daemon.  Further research is needed.
+NOTE: it's unclear whether `sudo systemctl stop postgresql` will wait until in-progress transactions are finished before shutting down the daemon.  Further research is needed.
 
 ### Procedure to Extend
 
@@ -116,16 +133,21 @@ fsadm: Executing mount /dev/xvdb /data
 
 Once the resize has completed, the filesystem is remounted (if previously mounted). You can also manually mount the filesystem for use using the `mount` command (e.g. `mount xvdb /data`).
 
-Use the `lsblk` command to check that the filesystem size has increased properly, e.g.
+Use the `df -h` command to check that the filesystem size has increased properly, e.g.
 
 ```
-$ sudo lsblk
-NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
-xvda    202:0    0   8G  0 disk 
-└─xvda1 202:1    0   8G  0 part /
-xvdb    202:16   0  13G  0 disk /data
+$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        484M     0  484M   0% /dev
+tmpfs           497M  4.0K  497M   1% /dev/shm
+tmpfs           497M   13M  484M   3% /run
+tmpfs           497M     0  497M   0% /sys/fs/cgroup
+/dev/xvda1      8.0G  1.2G  6.9G  15% /
+tmpfs           100M     0  100M   0% /run/user/0
+tmpfs           100M     0  100M   0% /run/user/1000
+/dev/xvdb        13G  256M  11.9G   2% /data
 ```
 
-Note: it will not exactly match the size of the Volume due to space needed for filesystem overhead.
+Note: the Size will not exactly match the size of the Volume due to space needed for filesystem overhead.
 
-ALSO: don't forget to restart any "busying" processes that were temporarily shut down - e.g. `sudo service postgresql start`
+ALSO: don't forget to restart any "busying" processes that were temporarily shut down - e.g. `sudo systemctl start postgresql`

@@ -92,7 +92,7 @@ fsadm: Cannot proceed with mounted filesystem "/data".
 
 Thus the "busying" process will have to be terminated.  In the case of a service such as PostgreSQL, it can be shut down by use of a command such as `sudo systemctl stop postgresql`. (Remember to `start` it again when this is all done.)
 
-NOTE: it's unclear whether `sudo systemctl stop postgresql` will wait until in-progress transactions are finished before shutting down the daemon.  Further research is needed.
+NOTE: it's unclear whether `sudo systemctl stop postgresql` will wait until in-progress transactions are finished before shutting down the daemon.  Further research is needed, in [issue #55](https://github.com/hackoregon/civic-devops/issues/55).
 
 ### Procedure to Extend
 

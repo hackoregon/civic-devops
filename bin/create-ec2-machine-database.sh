@@ -24,6 +24,7 @@ fi
 # SECURITYGROUPIDS='sg-28154957'
 # SUBNETID='subnet-8794fddf'
 # VOLUMESIZE='8'
+# VOLUMETYPE='gp2'
 
 EC2PROFILE=$2
 INSTANCE_ID=
@@ -42,7 +43,7 @@ aws ec2 run-instances \
    --security-group-ids $SECURITYGROUPIDS \
    --subnet-id $SUBNETID\
    --region $REGION \
-   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":$VOLUMESIZE,\"VolumeType\":\"gp2\",\"DeleteOnTermination\":true}}]" \
+   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":$VOLUMESIZE,\"VolumeType\":\"$VOLUMETYPE\",\"DeleteOnTermination\":true}}]" \
    --tag-specifications $TAG_SPECS \
    --query 'Instances[0].InstanceId' \
     > $INSTANCE_ID_FILE

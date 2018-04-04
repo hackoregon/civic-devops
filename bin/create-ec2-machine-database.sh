@@ -14,8 +14,9 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-# Source EC2 specs from a separate file
-# The ./ec2-profile.sh should contain the following variables
+EC2PROFILE=$2 # Source EC2 specs from a separate file
+# The $EC2PROFILE must contain the following variables (values are merely just example)
+#
 # DEVICENAME='/dev/sdb'
 # DELETEONTERM='true'
 # IMAGEID='ami-7f43f307'
@@ -27,7 +28,6 @@ fi
 # VOLUMESIZE='8'
 # VOLUMETYPE='gp2'
 
-EC2PROFILE=$2
 INSTANCE_ID=
 INSTANCE_ID_FILE='./tmp_instance_id'
 INSTANCE_NAME=$1

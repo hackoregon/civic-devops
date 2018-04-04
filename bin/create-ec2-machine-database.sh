@@ -17,6 +17,7 @@ fi
 # Source EC2 specs from a separate file
 # The ./ec2-profile.sh should contain the following variables
 # DEVICENAME='/dev/sdb'
+# DELETEONTERM='true'
 # IMAGEID='ami-7f43f307'
 # INSTANCETYPE='t2.micro'
 # KEYNAME='hackoregon-2018-database-dev-env'
@@ -43,7 +44,7 @@ aws ec2 run-instances \
    --security-group-ids $SECURITYGROUPIDS \
    --subnet-id $SUBNETID\
    --region $REGION \
-   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":$VOLUMESIZE,\"VolumeType\":\"$VOLUMETYPE\",\"DeleteOnTermination\":true}}]" \
+   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":$VOLUMESIZE,\"VolumeType\":\"$VOLUMETYPE\",\"DeleteOnTermination\":$DELETEONTERM}}]" \
    --tag-specifications $TAG_SPECS \
    --query 'Instances[0].InstanceId' \
     > $INSTANCE_ID_FILE

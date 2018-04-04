@@ -1,6 +1,7 @@
 #!/bin/bash -e 
 
 DEVICENAME='/dev/sdb'
+DELETEONTERM='true'
 IMAGEID='ami-7f43f307'
 INSTANCETYPE='t2.micro'
 KEYNAME='hackoregon-2018-database-dev-env'

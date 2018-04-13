@@ -96,7 +96,7 @@ Resources:
           Action: 
             - "s3:GetObject"
             - "s3:ListBucket"
-          Resource: "*"
+          Resource: "arn:aws:s3:::hacko-data-archive/*"
       Roles:
       - !Ref Role
       

@@ -61,7 +61,7 @@ Resources:
         Ebs:
           VolumeType: gp2 # !Ref VolumeType
           VolumeSize: 8 # !Ref VolumeSize
-          DeleteOnTermination: True # False # !Ref DeleteOnTermination
+          DeleteOnTermination: False # True # !Ref DeleteOnTermination
       KeyName: hackoregon-2018-database-dev-env # !Ref KeyName
       Tags:
       -

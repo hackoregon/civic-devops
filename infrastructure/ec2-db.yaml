@@ -5,10 +5,8 @@
 # Run:
 #   aws cloudformation create-stack --stack-name <stack name here> --template-body file:///absolute/path/to/this-file.yaml --capabilities CAPABILITY_NAMED_IAM
 
-# TODO:
-# - separate parameters into a file
-# - write wrapper for the aws cli command
-
+# PREREQUISITES:
+# - The IAM role for this instance must already exist
 
 ---
 AWSTemplateFormatVersion: '2010-09-09'
@@ -68,41 +66,42 @@ Resources:
         Key: Name
         Value: DB # !Ref InstanceName
 
-  Role:
-    Type: AWS::IAM::Role
-    Properties:
-      RoleName: db-role
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-        - Effect: Allow
-          Principal:
-            Service:
-            - ec2.amazonaws.com
-          Action:
-          - sts:AssumeRole
-      Path: "/"
-      #Policies:
-      #  - !Ref RolePolicies
+  # Role:
+  #   Type: AWS::IAM::Role
+  #   Properties:
+  #     RoleName: db-role
+  #     AssumeRolePolicyDocument:
+  #       Version: '2012-10-17'
+  #       Statement:
+  #       - Effect: Allow
+  #         Principal:
+  #           Service:
+  #           - ec2.amazonaws.com
+  #         Action:
+  #         - sts:AssumeRole
+  #     Path: "/"
+  #     #Policies:
+  #     #  - !Ref RolePolicies
 
-  RolePolicies:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyName: ec2-read-s3-policy
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-        - Effect: Allow
-          Action: 
-            - "s3:GetObject"
-            - "s3:ListBucket"
-          Resource: "arn:aws:s3:::hacko-data-archive/*"
-      Roles:
-      - !Ref Role
+  # RolePolicies:
+  #   Type: AWS::IAM::Policy
+  #   Properties:
+  #     PolicyName: ec2-read-s3-policy
+  #     PolicyDocument:
+  #       Version: '2012-10-17'
+  #       Statement:
+  #       - Effect: Allow
+  #         Action: 
+  #           - "s3:GetObject"
+  #           - "s3:ListBucket"
+  #         Resource: "arn:aws:s3:::hacko-data-archive/*"
+  #     Roles:
+  #     - !Ref Role
       
   InstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
       Path: "/"
       Roles:
-      - !Ref Role
+        # - !Ref Role
+        - db-role

@@ -1,0 +1,44 @@
+# Itention:
+# Create an IAM role for EC2 instance
+
+# USAGE:
+# Run:
+#   aws cloudformation create-stack --stack-name <stack name here> --template-body file:///absolute/path/to/this-file.yaml --capabilities CAPABILITY_NAMED_IAM
+
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'AWS CloudFormation Template to create EC2 instances'
+
+Resources:
+
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: db-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - ec2.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: "/"
+      #Policies:
+      #  - !Ref RolePolicies
+
+  RolePolicies:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: ec2-read-s3-policy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: 
+            - "s3:GetObject"
+            - "s3:ListBucket"
+          Resource: "arn:aws:s3:::hacko-data-archive/*"
+      Roles:
+      - !Ref Role

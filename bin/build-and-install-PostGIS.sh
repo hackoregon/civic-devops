@@ -1,6 +1,7 @@
 #! /bin/bash
 
-# PostgreSQL and command line tools
+# command line tools
+# Note: not yet clear what purpose these packages serve for this script
     yum install -y \
     git \
     lynx \
@@ -10,6 +11,9 @@
   && rm -rf /var/cache/yum
 
 # PostGIS build dependencies
+# Note: https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS24Debian9src indicates json-c-devel and libxml2-dev are required
+#       and PROJ and GDAL are indicated as well (which explains their inclusion as source)
+#       Can't see why the rest of these packages are necessary for PostGIS
     yum update -y \
   && yum install -y \
     boost-devel \
@@ -30,6 +34,7 @@ echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf \
 cd /usr/local/src/
 
 # source installs
+# CMAKE required for CGAL
 CMAKE_MAJOR_VERSION="3.10"
 CMAKE_VERSION="${CMAKE_MAJOR_VERSION}.2"
 wget -q https://cmake.org/files/v${CMAKE_MAJOR_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
@@ -72,6 +77,7 @@ wget -q http://download.osgeo.org/geos/geos-${GEOS_VERSION}.tar.bz2 \
   && sudo make install > /dev/null \
   && ldconfig
 
+# PROJ required for PostGIS
 PROJ_VERSION="4.9.3"
 DATUMGRID_VERSION="1.6"
 wget -q http://download.osgeo.org/proj/proj-${PROJ_VERSION}.tar.gz \
@@ -85,6 +91,7 @@ wget -q http://download.osgeo.org/proj/proj-${PROJ_VERSION}.tar.gz \
   && cd /usr/local/share/proj/ \
   && unzip /usr/local/src/proj-datumgrid-${DATUMGRID_VERSION}.zip
 
+# GDAL required for PostGIS
 GDAL_VERSION="2.2.4"
 wget -q http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION}.tar.gz \
   && tar xf gdal-${GDAL_VERSION}.tar.gz \
@@ -103,7 +110,6 @@ wget -q https://download.osgeo.org/postgis/source/postgis-${POSTGIS_VERSION}.tar
   && sudo make install > /dev/null \
   && ldconfig
 
-# pgRouting
 PGROUTING_VERSION="2.5.2"
 yum install -y perl-Data-Dumper
 curl -Ls https://github.com/pgRouting/pgrouting/archive/v${PGROUTING_VERSION}.tar.gz \

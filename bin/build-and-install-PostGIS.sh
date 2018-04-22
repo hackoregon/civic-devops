@@ -25,19 +25,19 @@
   && rm -rf /var/cache/yum
 
 # setup for builds
-ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig
+PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf \
   && mkdir -p /usr/local/src/
 WORKDIR /usr/local/src/
 
 # source installs
-ENV CMAKE_MAJOR 3.10
-ENV CMAKE_VERSION ${CMAKE_MAJOR}.2
+CMAKE_MAJOR="3.10"
+CMAKE_VERSION="${CMAKE_MAJOR}.2"
 RUN wget -q https://cmake.org/files/v${CMAKE_MAJOR}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
   && chmod +x cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
   && ./cmake-${CMAKE_VERSION}-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir --skip-license
 
-ENV CGAL_VERSION 4.11.1
+CGAL_VERSION="4.11.1"
 RUN wget -q https://github.com/CGAL/cgal/archive/releases/CGAL-${CGAL_VERSION}.tar.gz \
   && tar xf CGAL-${CGAL_VERSION}.tar.gz \
   && cd cgal-releases-CGAL-${CGAL_VERSION} \
@@ -46,7 +46,7 @@ RUN wget -q https://github.com/CGAL/cgal/archive/releases/CGAL-${CGAL_VERSION}.t
   && sudo make install \
   && ldconfig
 
-ENV PROTOBUF_VERSION 3.5.1
+PROTOBUF_VERSION="3.5.1"
 RUN wget -q https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protobuf-cpp-${PROTOBUF_VERSION}.tar.gz \
   && tar xf protobuf-cpp-${PROTOBUF_VERSION}.tar.gz \
   && cd /usr/local/src/protobuf-${PROTOBUF_VERSION} \
@@ -55,7 +55,7 @@ RUN wget -q https://github.com/google/protobuf/releases/download/v${PROTOBUF_VER
   && sudo make install > /dev/null \
   && ldconfig
 
-ENV PROTOBUF_C_VERSION 1.3.0
+PROTOBUF_C_VERSION="1.3.0"
 RUN wget -q https://github.com/protobuf-c/protobuf-c/releases/download/v${PROTOBUF_C_VERSION}/protobuf-c-${PROTOBUF_C_VERSION}.tar.gz \
   && tar xf protobuf-c-${PROTOBUF_C_VERSION}.tar.gz \
   && cd /usr/local/src/protobuf-c-${PROTOBUF_C_VERSION} \
@@ -64,7 +64,7 @@ RUN wget -q https://github.com/protobuf-c/protobuf-c/releases/download/v${PROTOB
   && sudo make install > /dev/null \
   && ldconfig
 
-ENV GEOS_VERSION 3.6.2
+GEOS_VERSION="3.6.2"
 RUN wget -q http://download.osgeo.org/geos/geos-${GEOS_VERSION}.tar.bz2 \
   && tar xf geos-${GEOS_VERSION}.tar.bz2 \
   && cd /usr/local/src/geos-${GEOS_VERSION} \
@@ -73,8 +73,8 @@ RUN wget -q http://download.osgeo.org/geos/geos-${GEOS_VERSION}.tar.bz2 \
   && sudo make install > /dev/null \
   && ldconfig
 
-ENV PROJ_VERSION 4.9.3
-ENV DATUMGRID_VERSION 1.6
+PROJ_VERSION="4.9.3"
+DATUMGRID_VERSION="1.6"
 RUN wget -q http://download.osgeo.org/proj/proj-${PROJ_VERSION}.tar.gz \
   && tar xf proj-${PROJ_VERSION}.tar.gz \
   && wget -q http://download.osgeo.org/proj/proj-datumgrid-${DATUMGRID_VERSION}.zip \
@@ -86,7 +86,7 @@ RUN wget -q http://download.osgeo.org/proj/proj-${PROJ_VERSION}.tar.gz \
   && cd /usr/local/share/proj/ \
   && unzip /usr/local/src/proj-datumgrid-${DATUMGRID_VERSION}.zip
 
-ENV GDAL_VERSION 2.2.4
+GDAL_VERSION="2.2.4"
 RUN wget -q http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION}.tar.gz \
   && tar xf gdal-${GDAL_VERSION}.tar.gz \
   && cd /usr/local/src/gdal-${GDAL_VERSION} \
@@ -95,7 +95,7 @@ RUN wget -q http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION}.
   && sudo make install > /dev/null \
   && ldconfig
 
-ENV POSTGIS_VERSION 2.4.3
+POSTGIS_VERSION="2.4.3"
 RUN wget -q https://download.osgeo.org/postgis/source/postgis-${POSTGIS_VERSION}.tar.gz \
   && tar xf postgis-${POSTGIS_VERSION}.tar.gz \
   && cd /usr/local/src/postgis-${POSTGIS_VERSION} \
@@ -105,7 +105,7 @@ RUN wget -q https://download.osgeo.org/postgis/source/postgis-${POSTGIS_VERSION}
   && ldconfig
 
 # pgRouting
-ENV PGROUTING_VERSION 2.5.2
+PGROUTING_VERSION="2.5.2"
 RUN yum install -y perl-Data-Dumper
 RUN curl -Ls https://github.com/pgRouting/pgrouting/archive/v${PGROUTING_VERSION}.tar.gz \
   > pgrouting-${PGROUTING_VERSION}.tar.gz \

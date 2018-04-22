@@ -1,44 +1,26 @@
-FROM amazonlinux:2-with-sources
-LABEL maintainer="M. Edward (Ed) Borasky <znmeb@znmeb.net>"
+#! /bin/bash
+#! /bin/bash
 
 # PostgreSQL and command line tools
-RUN amazon-linux-extras install \
-    postgresql9.6 \
-    nano \
-    vim \
-  && yum install -y \
-    awscli \
-    curl \
+    yum install -y \
     git \
-    groff \
     lynx \
-    postgresql \
-    postgresql-contrib \
-    postgresql-devel \
-    postgresql-docs \
-    postgresql-server \
     procps-ng \
     shadow-utils \
-    tar \
-    wget \
   && yum clean all \
   && rm -rf /var/cache/yum
 
 # PostGIS build dependencies
-RUN yum update -y \
+    yum update -y \
   && yum install -y \
     boost-devel \
-    bzip2 \
-    file \
     gcc \
     gcc-c++ \
     gettext-devel \
     gmp-devel \
     json-c-devel \
     libxml2-devel \
-    make \
     mpfr-devel \
-    unzip \
   && yum clean all \
   && rm -rf /var/cache/yum
 

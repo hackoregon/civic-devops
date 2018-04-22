@@ -27,7 +27,7 @@
 PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf \
   && mkdir -p /usr/local/src/
-WORKDIR /usr/local/src/
+cd /usr/local/src/
 
 # source installs
 CMAKE_MAJOR_VERSION="3.10"

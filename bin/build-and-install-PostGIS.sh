@@ -128,31 +128,3 @@ curl -Ls https://github.com/pgRouting/pgrouting/archive/v${PGROUTING_VERSION}.ta
   && make > ../../pgrouting.make \
   && sudo make install > /dev/null \
   && ldconfig
-
-# make the users
-useradd --shell /bin/bash --user-group --create-home dbsuper \
-  && mkdir -p /home/dbsuper/Projects/ \
-  && echo "alias l='ls -ACF --color=auto'" >> /etc/bashrc \
-  && echo "alias ll='ls -ltrAF --color=auto'" >> /etc/bashrc
-COPY home-scripts /home/dbsuper/
-COPY amazon-scripts/1make-dbusers.bash /var/lib/pgsql/
-chmod +x /home/dbsuper/*.bash /var/lib/pgsql/1make-dbusers.bash
-chown postgres:postgres /var/lib/pgsql/1make-dbusers.bash
-
-USER postgres
-ARG DB_USERS_TO_CREATE
-initdb --locale=en_US.utf8 --encoding=UTF8 -D /var/lib/pgsql/data/main \
-  && pg_ctl start -w -D /var/lib/pgsql/data/main \
-  && createuser --superuser dbsuper \
-  && createdb --owner=dbsuper dbsuper \
-  && bash /var/lib/pgsql/1make-dbusers.bash \
-  && pg_ctl stop -w -D /var/lib/pgsql/data/main
-
-# do backups at the end so rest of image doesn't need a rebuild
-USER root
-COPY Backups /home/dbsuper/Backups
-COPY Raw /home/dbsuper/Raw
-chown -R dbsuper:dbsuper /home/dbsuper
-
-USER postgres
-CMD pg_ctl -D /var/lib/pgsql/data/main start; /usr/bin/sleep 1001d

@@ -1,5 +1,4 @@
 #! /bin/bash
-#! /bin/bash
 
 # PostgreSQL and command line tools
     yum install -y \

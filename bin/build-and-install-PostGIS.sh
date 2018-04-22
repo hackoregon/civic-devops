@@ -30,9 +30,9 @@ RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf \
 WORKDIR /usr/local/src/
 
 # source installs
-CMAKE_MAJOR="3.10"
-CMAKE_VERSION="${CMAKE_MAJOR}.2"
-RUN wget -q https://cmake.org/files/v${CMAKE_MAJOR}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
+CMAKE_MAJOR_VERSION="3.10"
+CMAKE_VERSION="${CMAKE_MAJOR_VERSION}.2"
+RUN wget -q https://cmake.org/files/v${CMAKE_MAJOR_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
   && chmod +x cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
   && ./cmake-${CMAKE_VERSION}-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir --skip-license
 

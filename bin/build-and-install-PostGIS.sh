@@ -112,6 +112,7 @@ wget -q https://download.osgeo.org/postgis/source/postgis-${POSTGIS_VERSION}.tar
 
 PGROUTING_VERSION="2.5.2"
 yum install -y perl-Data-Dumper
+# use of curl to add a prefix to the downloaded filename
 curl -Ls https://github.com/pgRouting/pgrouting/archive/v${PGROUTING_VERSION}.tar.gz \
   > pgrouting-${PGROUTING_VERSION}.tar.gz \
   && tar xf pgrouting-${PGROUTING_VERSION}.tar.gz \

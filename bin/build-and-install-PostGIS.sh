@@ -41,6 +41,7 @@ wget -q https://cmake.org/files/v${CMAKE_MAJOR_VERSION}/cmake-${CMAKE_VERSION}-L
   && chmod +x cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
   && ./cmake-${CMAKE_VERSION}-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir --skip-license
 
+# ? Why is this necessary for PostGIS?
 CGAL_VERSION="4.11.1"
 wget -q https://github.com/CGAL/cgal/archive/releases/CGAL-${CGAL_VERSION}.tar.gz \
   && tar xf CGAL-${CGAL_VERSION}.tar.gz \
@@ -50,6 +51,7 @@ wget -q https://github.com/CGAL/cgal/archive/releases/CGAL-${CGAL_VERSION}.tar.g
   && sudo make install \
   && ldconfig
 
+# ? Why is this necessary for PostGIS?
 PROTOBUF_VERSION="3.5.1"
 wget -q https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION}/protobuf-cpp-${PROTOBUF_VERSION}.tar.gz \
   && tar xf protobuf-cpp-${PROTOBUF_VERSION}.tar.gz \
@@ -59,6 +61,7 @@ wget -q https://github.com/google/protobuf/releases/download/v${PROTOBUF_VERSION
   && sudo make install > /dev/null \
   && ldconfig
 
+# ? Why is this necessary for PostGIS?
 PROTOBUF_C_VERSION="1.3.0"
 wget -q https://github.com/protobuf-c/protobuf-c/releases/download/v${PROTOBUF_C_VERSION}/protobuf-c-${PROTOBUF_C_VERSION}.tar.gz \
   && tar xf protobuf-c-${PROTOBUF_C_VERSION}.tar.gz \
@@ -68,6 +71,7 @@ wget -q https://github.com/protobuf-c/protobuf-c/releases/download/v${PROTOBUF_C
   && sudo make install > /dev/null \
   && ldconfig
 
+# ? Why is this necessary for PostGIS?
 GEOS_VERSION="3.6.2"
 wget -q http://download.osgeo.org/geos/geos-${GEOS_VERSION}.tar.bz2 \
   && tar xf geos-${GEOS_VERSION}.tar.bz2 \
@@ -110,6 +114,7 @@ wget -q https://download.osgeo.org/postgis/source/postgis-${POSTGIS_VERSION}.tar
   && sudo make install > /dev/null \
   && ldconfig
 
+# ? Why is this necessary for PostGIS?
 PGROUTING_VERSION="2.5.2"
 yum install -y perl-Data-Dumper
 # use of curl to add a prefix to the downloaded filename

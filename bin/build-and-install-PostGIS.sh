@@ -2,20 +2,20 @@
 
 # command line tools
 # Note: not yet clear what purpose these packages serve for this script
-    yum install -y \
-    git \
-    lynx \
-    procps-ng \
-    shadow-utils \
-  && yum clean all \
-  && rm -rf /var/cache/yum
+sudo yum install -y \
+git \
+lynx \
+procps-ng \
+shadow-utils \
+  && sudo yum clean all \
+  && sudo rm -rf /var/cache/yum
 
 # PostGIS build dependencies
 # Note: https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS24Debian9src indicates json-c-devel and libxml2-dev are required
 #       and PROJ and GDAL are indicated as well (which explains their inclusion as source)
 #       Can't see why the rest of these packages are necessary for PostGIS
-    yum update -y \
-  && yum install -y \
+sudo yum update -y \
+  && sudo yum install -y \
     boost-devel \
     gcc \
     gcc-c++ \
@@ -24,8 +24,8 @@
     json-c-devel \
     libxml2-devel \
     mpfr-devel \
-  && yum clean all \
-  && rm -rf /var/cache/yum
+  && sudo yum clean all \
+  && sudo rm -rf /var/cache/yum
 
 # setup for builds
 PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"

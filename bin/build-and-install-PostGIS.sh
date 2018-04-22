@@ -23,7 +23,7 @@
     mpfr-devel \
   && yum clean all \
   && rm -rf /var/cache/yum
-  
+
 # setup for builds
 ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig
 RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf \
@@ -43,7 +43,7 @@ RUN wget -q https://github.com/CGAL/cgal/archive/releases/CGAL-${CGAL_VERSION}.t
   && cd cgal-releases-CGAL-${CGAL_VERSION} \
   && cmake . > ../cgal.cmake \
   && make \
-  && make install \
+  && sudo make install \
   && ldconfig
 
 ENV PROTOBUF_VERSION 3.5.1
@@ -52,7 +52,7 @@ RUN wget -q https://github.com/google/protobuf/releases/download/v${PROTOBUF_VER
   && cd /usr/local/src/protobuf-${PROTOBUF_VERSION} \
   && ./configure > ../protobuf.configure \
   && make > /dev/null \
-  && make install > /dev/null \
+  && sudo make install > /dev/null \
   && ldconfig
 
 ENV PROTOBUF_C_VERSION 1.3.0
@@ -61,7 +61,7 @@ RUN wget -q https://github.com/protobuf-c/protobuf-c/releases/download/v${PROTOB
   && cd /usr/local/src/protobuf-c-${PROTOBUF_C_VERSION} \
   && ./configure > ../protobuf-c.configure \
   && make > /dev/null \
-  && make install > /dev/null \
+  && sudo make install > /dev/null \
   && ldconfig
 
 ENV GEOS_VERSION 3.6.2
@@ -70,7 +70,7 @@ RUN wget -q http://download.osgeo.org/geos/geos-${GEOS_VERSION}.tar.bz2 \
   && cd /usr/local/src/geos-${GEOS_VERSION} \
   && ./configure > ../geos.configure \
   && make > /dev/null \
-  && make install > /dev/null \
+  && sudo make install > /dev/null \
   && ldconfig
 
 ENV PROJ_VERSION 4.9.3
@@ -81,7 +81,7 @@ RUN wget -q http://download.osgeo.org/proj/proj-${PROJ_VERSION}.tar.gz \
   && cd /usr/local/src/proj-${PROJ_VERSION} \
   && ./configure > ../proj.configure \
   && make > /dev/null \
-  && make install > /dev/null \
+  && sudo make install > /dev/null \
   && ldconfig \
   && cd /usr/local/share/proj/ \
   && unzip /usr/local/src/proj-datumgrid-${DATUMGRID_VERSION}.zip
@@ -92,7 +92,7 @@ RUN wget -q http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION}.
   && cd /usr/local/src/gdal-${GDAL_VERSION} \
   && ./configure > ../gdal.configure \
   && make > /dev/null \
-  && make install > /dev/null \
+  && sudo make install > /dev/null \
   && ldconfig
 
 ENV POSTGIS_VERSION 2.4.3
@@ -101,7 +101,7 @@ RUN wget -q https://download.osgeo.org/postgis/source/postgis-${POSTGIS_VERSION}
   && cd /usr/local/src/postgis-${POSTGIS_VERSION} \
   && ./configure > ../postgis.configure \
   && make > /dev/null \
-  && make install > /dev/null \
+  && sudo make install > /dev/null \
   && ldconfig
 
 # pgRouting
@@ -115,7 +115,7 @@ RUN curl -Ls https://github.com/pgRouting/pgrouting/archive/v${PGROUTING_VERSION
   && cd build \
   && cmake .. > ../../pgrouting.cmake \
   && make > ../../pgrouting.make \
-  && make install > /dev/null \
+  && sudo make install > /dev/null \
   && ldconfig
 
 # make the users

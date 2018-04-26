@@ -5,6 +5,8 @@
 What we are working on:
 
 - [ ] [Instantiate 2018 Season project teams](https://github.com/hackoregon/civic-devops/projects/1)
+- [ ] [Centralize legacy PostgreSQL databases](https://github.com/hackoregon/civic-devops/projects/2)
+- [ ] [Database Backup Solution](https://github.com/hackoregon/civic-devops/projects/3)
 
 For leader of other teams, Here is what we are needing your help:
 

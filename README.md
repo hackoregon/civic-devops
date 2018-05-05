@@ -26,7 +26,8 @@ For leader of other teams, Here is what we are needing your help:
 * [Local Elections project](https://github.com/hackoregon/elections-2018)
 * [Neighborhood Development project](https://github.com/hackoregon/neighborhoods-2018)
 * [Transportation Systems project](https://github.com/hackoregon/transportation-systems)
-* [2018 Repo for Transportation Systems Docker Environment](https://github.com/hackoregon/transportation-systems-docker)
+* [Exemplar for 2018 API layer](https://github.com/hackoregon/backend-examplar-2018)
+* [Naming convention for 2018 projects](https://github.com/hackoregon/civic-devops/issues/1)
 
 ### 3.2. 2017 Project season
 

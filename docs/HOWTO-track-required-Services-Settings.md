@@ -20,16 +20,18 @@ The priority setting must be unique and determines the order in which listener r
 
 The above requirement are be the same for the civic-2017 service if any new services are added to its domain (2017.civicpdx.org)
 
-The 2017 services priorities are historical and are not being changed at this time.
+Most of the 2017 services priorities are historical and will be left alone. Some have changed to work with the full sub-domain of services at both the route53 (DNS) level and ELB levels.
+
+Once all sub-domain and priorities have been implemented and working, it may be possible to change the civic-lab service priority to 9 for consistency.
 
 | Year | Service Name                     | CPU  |  Mem.  |  Port   | Priority |           Host            | Path                       |
 | :--: | :------------------------------- | :--: | :----: | :-----: | :------: | :-----------------------: | :------------------------- |
 | 2017 | emergency-service                |  0   |  100   |  8000   |    3     |   service.civicpdx.org    | /emergency*                |
-| 2017 | endpoint-service                 |  0   |  100   |  8000   |    4     |   service.civicpdx.org    | /endpoint-service*         |
+| 2017 | endpoint-service                 |  0   |  100   |  8000   |    4     |   service.civicpdx.org    | /endpoint*                 |
 | 2017 | homeless-service                 |  0   |  100   |  8000   |    5     |   service.civicpdx.org    | /homeless*                 |
 | 2017 | housing-service                  |  0   |  100   |  8000   |    6     |   service.civicpdx.org    | /housing*                  |
 | 2017 | transport-service                |  0   |  2048  |  8000   |    7     |   service.civicpdx.org    | /transport*                |
-| 2017 | budget-service                   |  0   |  100   |  8000   |    69    |   service.civicpdx.org    | /budget*                   |
+| 2017 | budget-service                   |  0   |  100   |  8000   |    8     |   service.civicpdx.org    | /budget*                   |
 | 2018 | civic-2017-service               |  0   |  100   |  3000   |    10    |     2017.civicpdx.org     | /*                         |
 | 2018 | housing-affordability-service    |  0   |  ???   |   ???   |    20    |   service.civicpdx.org    | /housing-affordability*    |
 | 2018 | neighborhood-development-service |  0   |  ???   |   ???   |    25    |   service.civicpdx.org    | /neighborhood-development* |
@@ -41,4 +43,6 @@ The 2017 services priorities are historical and are not being changed at this ti
 |      |                                  |      |        |         |    55    |                           |                            |
 |      |                                  |      |        |         |    60    |                           |                            |
 | 2017 | civic-lab-service                |  0   |  1024  |  8000   |    78    |   service.civicpdx.org    | /                          |
+
+
 

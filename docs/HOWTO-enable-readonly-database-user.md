@@ -24,8 +24,11 @@ GRANT USAGE ON SCHEMA public to "shield-agent-level6";
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO "shield-agent-level6";
 
 GRANT CONNECT ON DATABASE "avengers-secret-hideouts" to "shield-agent-level6";
+\c avengers-secret-hideouts
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO "shield-agent-level6";
 GRANT USAGE ON SCHEMA public to "shield-agent-level6";
 GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO "shield-agent-level6";
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO "shield-agent-level6";
 ```
+
+Note: don't forget the `\c` command in the middle - that switches context to the selected database, so that all `SCHEMA public` references are explictly towards the selected database and not just "into the ether".

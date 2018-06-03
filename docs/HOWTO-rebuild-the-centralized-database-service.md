@@ -38,8 +38,9 @@ This procedure relies on the `create-db.sh` script that runs on the PostgreSQL s
 * Prereq: run the script from a shell where `sudo -u postgres` will silently succeed
 * Step 1: decide upon the name of the database instance, name of database user who will own that instance, and password for that user
 * Step 2: `scp` the script to the server and `ssh` in as `ec2-user` (or equivalent)
-* Step 3: run `./create.db.sh` with no parameters (or alternatively, feed the values from Step 1 in as the correct parameters)
+* Step 3: run `./create-db.sh` with no parameters (or alternatively, feed the values from Step 1 in as the correct parameters)
 * Step 4: fill in the database user password when prompted (if running interactively)
+* Result: database user and associated database are created
 
 ## Restore databases from backup
 

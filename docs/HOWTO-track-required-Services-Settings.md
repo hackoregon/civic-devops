@@ -39,6 +39,7 @@ Once all sub-domain and priorities have been implemented and working, it may be 
 | 2018 | disaster-resilience-service      |  0   |  300   |  8000   |    35    |   service.civicpdx.org    | /disaster-resilience*      |
 | 2018 | transportation-systems-service   |  0   |  500   |  8000   |    40    |   service.civicpdx.org    | /transportation-systems*   |
 | 2018 | civic-2018-service               |  0   |  100   |  3000   |    45    | staging-2018.civicpdx.org | /*                         |
+| 2018 | civic-2018-service               |  0   |  100   |  3000   |    47    | civicplatform.org | /*                         |
 |      |                                  |      |        |         |    50    |                           |                            |
 |      |                                  |      |        |         |    55    |                           |                            |
 |      |                                  |      |        |         |    60    |                           |                            |

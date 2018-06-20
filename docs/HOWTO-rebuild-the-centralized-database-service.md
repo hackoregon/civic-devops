@@ -14,8 +14,8 @@ This procedure relies on the `create-ec2-machine-database.sh` script:
 
 * Prereq: run the script from an environment where AWS keys are available and the keys grant EC2 machine creation privileges
 * Prereq: the [awscli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) is installed
-* Step 1: edit any of the VARIABLES to match your intended EC2 virtual machine environment, especially the KEYNAME
-* Step 2: run `./create-ec2-machine-database.sh NAME_OF_RESULTING_MACHINE`, where NAME_OF_RESULTING_MACHINE will be used to populate the AWS "Name" tag of the machine
+* Step 1: create and/or edit a profile script (e.g. `ec2-profile-db-production.sh`) and set the VARIABLES in the profile to match your intended EC2 virtual machine environment - especially the KEYNAME
+* Step 2: run `./create-ec2-machine-database.sh NAME_OF_RESULTING_MACHINE EC2PROFILE_SCRIPT.sh, where NAME_OF_RESULTING_MACHINE will be used to populate the AWS "Name" Tag of the machine
 
 ## Install and configure PostgreSQL
 

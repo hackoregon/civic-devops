@@ -33,6 +33,7 @@ Once all sub-domain and priorities have been implemented and working, it may be 
 | 2017 | transport-service                |  0   | 2048   |  8000   |    7     |   service.civicpdx.org    | /transport*                |
 | 2017 | budget-service                   |  0   |  100   |  8000   |    8     |   service.civicpdx.org    | /budget*                   |
 | 2018 | civic-2017-service               |  0   |  100   |  3000   |    10    |     2017.civicpdx.org     | /*                         |
+| 2018 | civic-2017-service               |  0   |  100   |  3000   |    11    |     civicpdx.org          | /*                         |
 | 2018 | housing-affordability-service    |  0   |  100   |  8000   |    20    |   service.civicpdx.org    | /housing-affordability*    |
 | 2018 | neighborhood-development-service |  0   |  300   |  8000   |    25    |   service.civicpdx.org    | /neighborhood-development* |
 | 2018 | local-elections-service          |  0   |  200   |  8000   |    30    |   service.civicpdx.org    | /local-elections*          |

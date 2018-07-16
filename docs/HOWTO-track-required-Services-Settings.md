@@ -27,7 +27,6 @@ Once all sub-domain and priorities have been implemented and working, it may be 
 | Year | Service Name                     | CPU  |  Mem.  |  Port   | Priority |           Host            | Path                       |
 | :--: | :------------------------------- | :--: | :----: | :-----: | :------: | :-----------------------: | :------------------------- |
 | 2017 | emergency-service                |  0   |  100   |  8000   |    3     |   service.civicpdx.org    | /emergency*                |
-| 2017 | endpoint-service                 |  0   |  100   |  8000   |    4     |   service.civicpdx.org    | /endpoint*                 |
 | 2017 | homeless-service                 |  0   |  100   |  8000   |    5     |   service.civicpdx.org    | /homeless*                 |
 | 2017 | housing-service                  |  0   |  100   |  8000   |    6     |   service.civicpdx.org    | /housing*                  |
 | 2017 | transport-service                |  0   | 2048   |  8000   |    7     |   service.civicpdx.org    | /transport*                |
@@ -35,16 +34,24 @@ Once all sub-domain and priorities have been implemented and working, it may be 
 | 2018 | civic-2017-service               |  0   |  100   |  3000   |    10    |     2017.civicpdx.org     | /*                         |
 | 2018 | civic-2017-service               |  0   |  100   |  3000   |    11    |     civicpdx.org          | /*                         |
 | 2018 | housing-affordability-service    |  0   |  100   |  8000   |    20    |   service.civicpdx.org    | /housing-affordability*    |
+| 2018 | housing-affordability-service    |  0   |  100   |  8000   |    21    |   service.civicpdx.org:443 | /housing-affordability*    |
 | 2018 | neighborhood-development-service |  0   |  300   |  8000   |    25    |   service.civicpdx.org    | /neighborhood-development* |
+| 2018 | neighborhood-development-service |  0   |  300   |  8000   |    26    |   service.civicpdx.org:443 | /neighborhood-development* |
 | 2018 | local-elections-service          |  0   |  200   |  8000   |    30    |   service.civicpdx.org    | /local-elections*          |
+| 2018 | local-elections-service          |  0   |  200   |  8000   |    31    |   service.civicpdx.org:443 | /local-elections*          |
 | 2018 | disaster-resilience-service      |  0   |  300   |  8000   |    35    |   service.civicpdx.org    | /disaster-resilience*      |
+| 2018 | disaster-resilience-service      |  0   |  300   |  8000   |    36    |   service.civicpdx.org:443 | /disaster-resilience*      |
 | 2018 | transportation-systems-service   |  0   |  500   |  8000   |    40    |   service.civicpdx.org    | /transportation-systems*   |
+| 2018 | transportation-systems-service   |  0   |  500   |  8000   |    41    |   service.civicpdx.org:443 | /transportation-systems*   |
 | 2018 | civic-2018-service               |  0   |  100   |  3000   |    45    | staging-2018.civicpdx.org | /*                         |
 | 2018 | civic-2018-service               |  0   |  100   |  3000   |    47    | civicplatform.org | /*                         |
 |      |                                  |      |        |         |    50    |                           |                            |
 |      |                                  |      |        |         |    55    |                           |                            |
 |      |                                  |      |        |         |    60    |                           |                            |
-| 2017 | civic-lab-service                |  0   |   50   |  8000   |    78    |   service.civicpdx.org    | /                          |
+| both | endpoint-service                 |  0   |  100   |  8000   |    79     |   service.civicpdx.org    | /                 |
+| 2017 | endpoint-service                 |  0   |  100   |  8000   |    80     |   service.civicpdx.org    | /\_\_assets*                 |
+| 2017 | endpoint-service                 |  0   |  100   |  8000   |    81    |   service.civicpdx.org:443 | /                 |
+| 2017 | endpoint-service                 |  0   |  100   |  8000   |    82    |   service.civicpdx.org:443 | /\_\_assets*                 |
 
 
 

@@ -14,15 +14,13 @@ The Host value is used to place the service in a domain for the load balancer an
 
 The priority setting must be unique and determines the order in which listener rules are evaluated from lowest to highest number. The first rule to satisfy the request is applied.
 
-**The civic-lab service must be the highest priority number of all services (last rule to be evaluated before the catch-all default rule) since it's Path is ( / )**
+**The endpoint service must be the highest priority number of all services (last rule to be evaluated before the catch-all default rule) since it's Path is ( / )**
 
 **All 2018 services must have priority numbers less than (evaluated before) the civic-2018-service since its path is ( /* ) and would match before any new services in the staging-2018.civicpdx.org domain.**
 
 The above requirement are be the same for the civic-2017 service if any new services are added to its domain (2017.civicpdx.org)
 
 Most of the 2017 services priorities are historical and will be left alone. Some have changed to work with the full sub-domain of services at both the route53 (DNS) level and ELB levels.
-
-Once all sub-domain and priorities have been implemented and working, it may be possible to change the civic-lab service priority to 9 for consistency.
 
 | Year | Service Name                     | CPU  |  Mem.  |  Port   | Priority |           Host            | Path                       |
 | :--: | :------------------------------- | :--: | :----: | :-----: | :------: | :-----------------------: | :------------------------- |

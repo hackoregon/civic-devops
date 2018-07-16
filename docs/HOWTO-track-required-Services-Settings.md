@@ -30,7 +30,8 @@ Most of the 2017 services priorities are historical and will be left alone. Some
 | 2017 | transport-service                |  0   | 2048   |  8000   |    7     |   service.civicpdx.org    | /transport*                |
 | 2017 | budget-service                   |  0   |  100   |  8000   |    8     |   service.civicpdx.org    | /budget*                   |
 | 2018 | civic-2017-service               |  0   |  100   |  3000   |    10    |     2017.civicpdx.org     | /*                         |
-| 2018 | civic-2017-service               |  0   |  100   |  3000   |    11    |     civicpdx.org          | /*                         |
+| 2018 | civic-2017-service               |  0   |  100   |  3000   |    11    |     2017.civicpdx.org:443 | /*                         |
+| 2018 | civic-2017-service               |  0   |  100   |  3000   |    12    |     civicpdx.org          | /*                         |
 | 2018 | housing-affordability-service    |  0   |  100   |  8000   |    20    |   service.civicpdx.org    | /housing-affordability*    |
 | 2018 | housing-affordability-service    |  0   |  100   |  8000   |    21    |   service.civicpdx.org:443 | /housing-affordability*    |
 | 2018 | neighborhood-development-service |  0   |  300   |  8000   |    25    |   service.civicpdx.org    | /neighborhood-development* |
@@ -41,8 +42,8 @@ Most of the 2017 services priorities are historical and will be left alone. Some
 | 2018 | disaster-resilience-service      |  0   |  300   |  8000   |    36    |   service.civicpdx.org:443 | /disaster-resilience*      |
 | 2018 | transportation-systems-service   |  0   |  500   |  8000   |    40    |   service.civicpdx.org    | /transportation-systems*   |
 | 2018 | transportation-systems-service   |  0   |  500   |  8000   |    41    |   service.civicpdx.org:443 | /transportation-systems*   |
-| 2018 | civic-2018-service               |  0   |  100   |  3000   |    45    | staging-2018.civicpdx.org | /*                         |
-| 2018 | civic-2018-service               |  0   |  100   |  3000   |    47    | civicplatform.org | /*                         |
+| 2018 | civic-2018-service               |  0   |  100   |  3000   |    45    | civicplatform.org | /*                         |
+| 2018 | civic-2018-service               |  0   |  100   |  3000   |    46    | civicplatform.org:443 | /*                         |
 |      |                                  |      |        |         |    50    |                           |                            |
 |      |                                  |      |        |         |    55    |                           |                            |
 |      |                                  |      |        |         |    60    |                           |                            |

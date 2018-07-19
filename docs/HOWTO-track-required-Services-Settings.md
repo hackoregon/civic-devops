@@ -51,9 +51,9 @@ Most of the 2017 services priorities are historical and will be left alone. Some
 | 2017 | transport-service                |  0   | 2048   |  8000   |    59     |   service.civicpdx.org:443 | /transport*                |
 |      |                                  |      |        |         |    60    |                           |                            |
 | both | endpoint-service                 |  0   |  100   |  8000   |    79     |   service.civicpdx.org    | /                 |
-| 2017 | endpoint-service                 |  0   |  100   |  8000   |    80     |   service.civicpdx.org    | /\_\_assets*                 |
-| 2017 | endpoint-service                 |  0   |  100   |  8000   |    81    |   service.civicpdx.org:443 | /                 |
-| 2017 | endpoint-service                 |  0   |  100   |  8000   |    82    |   service.civicpdx.org:443 | /\_\_assets*                 |
+| both | endpoint-service                 |  0   |  100   |  8000   |    80     |   service.civicpdx.org    | /\_\_assets*                 |
+| both | endpoint-service                 |  0   |  100   |  8000   |    81    |   service.civicpdx.org:443 | /                 |
+| both | endpoint-service                 |  0   |  100   |  8000   |    82    |   service.civicpdx.org:443 | /\_\_assets*                 |
 
 
 

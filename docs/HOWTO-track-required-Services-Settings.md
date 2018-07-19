@@ -24,11 +24,6 @@ Most of the 2017 services priorities are historical and will be left alone. Some
 
 | Year | Service Name                     | CPU  |  Mem.  |  Port   | Priority |           Host            | Path                       |
 | :--: | :------------------------------- | :--: | :----: | :-----: | :------: | :-----------------------: | :------------------------- |
-| 2017 | emergency-service                |  0   |  100   |  8000   |    3     |   service.civicpdx.org    | /emergency*                |
-| 2017 | homeless-service                 |  0   |  100   |  8000   |    5     |   service.civicpdx.org    | /homeless*                 |
-| 2017 | housing-service                  |  0   |  100   |  8000   |    6     |   service.civicpdx.org    | /housing*                  |
-| 2017 | transport-service                |  0   | 2048   |  8000   |    7     |   service.civicpdx.org    | /transport*                |
-| 2017 | budget-service                   |  0   |  100   |  8000   |    8     |   service.civicpdx.org    | /budget*                   |
 | 2018 | civic-2017-service               |  0   |  100   |  3000   |    10    |     2017.civicpdx.org     | /*                         |
 | 2018 | civic-2017-service               |  0   |  100   |  3000   |    11    |     2017.civicpdx.org:443 | /*                         |
 | 2018 | civic-2017-service               |  0   |  100   |  3000   |    12    |     civicpdx.org          | /*                         |
@@ -44,8 +39,16 @@ Most of the 2017 services priorities are historical and will be left alone. Some
 | 2018 | transportation-systems-service   |  0   |  500   |  8000   |    41    |   service.civicpdx.org:443 | /transportation-systems*   |
 | 2018 | civic-2018-service               |  0   |  100   |  3000   |    45    | civicplatform.org | /*                         |
 | 2018 | civic-2018-service               |  0   |  100   |  3000   |    46    | civicplatform.org:443 | /*                         |
-|      |                                  |      |        |         |    50    |                           |                            |
-|      |                                  |      |        |         |    55    |                           |                            |
+| 2017 | budget-service                   |  0   |  100   |  8000   |    50     |   service.civicpdx.org    | /budget*                   |
+| 2017 | budget-service                   |  0   |  100   |  8000   |    51     |   service.civicpdx.org:443 | /budget*                   |
+| 2017 | emergency-service                |  0   |  100   |  8000   |    52     |   service.civicpdx.org    | /emergency*                |
+| 2017 | emergency-service                |  0   |  100   |  8000   |    53     |   service.civicpdx.org:443 | /emergency*                |
+| 2017 | homeless-service                 |  0   |  100   |  8000   |    54     |   service.civicpdx.org    | /homeless*                 |
+| 2017 | homeless-service                 |  0   |  100   |  8000   |    55    |   service.civicpdx.org:443 | /homeless*                 |
+| 2017 | housing-service                  |  0   |  100   |  8000   |    56     |   service.civicpdx.org    | /housing*                  |
+| 2017 | housing-service                  |  0   |  100   |  8000   |    57     |   service.civicpdx.org:443 | /housing*                  |
+| 2017 | transport-service                |  0   | 2048   |  8000   |    58     |   service.civicpdx.org    | /transport*                |
+| 2017 | transport-service                |  0   | 2048   |  8000   |    59     |   service.civicpdx.org:443 | /transport*                |
 |      |                                  |      |        |         |    60    |                           |                            |
 | both | endpoint-service                 |  0   |  100   |  8000   |    79     |   service.civicpdx.org    | /                 |
 | 2017 | endpoint-service                 |  0   |  100   |  8000   |    80     |   service.civicpdx.org    | /\_\_assets*                 |

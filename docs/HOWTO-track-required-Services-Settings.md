@@ -24,9 +24,9 @@ Most of the 2017 services priorities are historical and will be left alone. Some
 
 | Year | Service Name                     | CPU  |  Mem.  |  Port   | Priority |           Host            | Path                       |
 | :--: | :------------------------------- | :--: | :----: | :-----: | :------: | :-----------------------: | :------------------------- |
-| 2018 | civic-2017-service               |  0   |  100   |  3000   |    10    |     2017.civicpdx.org     | /*                         |
-| 2018 | civic-2017-service               |  0   |  100   |  3000   |    11    |     2017.civicpdx.org:443 | /*                         |
-| 2018 | civic-2017-service               |  0   |  100   |  3000   |    12    |     civicpdx.org          | /*                         |
+| 2018 | civic-2017-service               |  0   |  100   |  3000   |    15    |     2017.civicpdx.org     | /*                         |
+| 2018 | civic-2017-service               |  0   |  100   |  3000   |    16    |     2017.civicpdx.org:443 | /*                         |
+| 2018 | civic-2017-service               |  0   |  100   |  3000   |    17    |     civicpdx.org          | /*                         |
 | 2018 | housing-affordability-service    |  0   |  100   |  8000   |    20    |   service.civicpdx.org    | /housing-affordability*    |
 | 2018 | housing-affordability-service    |  0   |  100   |  8000   |    21    |   service.civicpdx.org:443 | /housing-affordability*    |
 | 2018 | neighborhood-development-service |  0   |  300   |  8000   |    25    |   service.civicpdx.org    | /neighborhood-development* |

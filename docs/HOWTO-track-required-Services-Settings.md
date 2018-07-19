@@ -1,26 +1,27 @@
 #     **Settings needed for Civic services**
 
-New services need to be entered into the below table and have the values completed and reviewed before task definitions can be created to permit containers being deployed to the ECS instances from the Travis/build CI/CD.
+New services need to be entered into the below table and have the values assigned and reviewed before task definitions can be created and containers deployed to the ECS instances.
 
-The following table is used to track items assigned to services. These items are needed to keep services from colliding in the load balancer listener rules, service name collisions, domain/subdomain for services and the needed CPU/Memory and container Port resources need for services to start and run in the container service (ECS).
+The following table is used to track the configuration we've assigned to ECS services. This tracking is needed to keep services from colliding in the load balancer listener rules, as well as prevent service name collisions, domain/subdomain for services and the needed CPU/Memory and container Port resources need for services to start and run in the container service (ECS).
 
+## CPU & Memory
 In ECS/EC2 (current for Hack Oregon stack) the CPU and memory values are used to reserve resources and set a resource limit (if there is not enough of a recourse for the reservation to complete, the service will not start, regardless of how much CPU/Memory is really used by the service). The CPU and memory settings are optional.
 
-In ECS/Fargate (possible future infrastructure) the CPU and memory settings are required and the service will be allocated (and charges incurred) for the amount of the CPU and memory that is set (regardless if used or not) and acts as a hard limit for the service resources.
+In ECS/Fargate (a possible future infrastructure) the CPU and memory settings are required and the service will be allocated (and charges incurred) for the amount of the CPU and memory that is set (regardless if used or not) and acts as a hard limit for the service resources.
 
 **Attempts should be made to set the CPU and Memory setting as low as possible as they have an effect on the size of the ECS instances (EC2) and the costs (EC2 and Fargate)**
 
+## Host & Path
 The Host value is used to place the service in a domain for the load balancer and the Host and Path are combined for the listener rule for the service. Care must be taken to make sure paths in a domain/subdomain do not collide/overlap between services as the first listener rule that matches will apply.
 
-The priority setting must be unique and determines the order in which listener rules are evaluated from lowest to highest number. The first rule to satisfy the request is applied.
+## Priority
+The Priority value must be unique and determines the order in which listener rules are evaluated from lowest to highest number (smallest to largest). The first rule to satisfy the request is applied - e.g. the rule with Priority "20" is evaluated before the rule with Priority "56".
 
-**The endpoint service must be the highest priority number of all services (last rule to be evaluated before the catch-all default rule) since it's Path is ( / )**
+**NOTE: The endpoint-service must have the largest Priority number of all services (last rule to be evaluated before the catch-all default rule) since its Path is ( / )**
 
-**All 2018 services must have priority numbers less than (evaluated before) the civic-2018-service since its path is ( /* ) and would match before any new services in the staging-2018.civicpdx.org domain.**
+**All 2018 services must have Priority values smaller than (evaluated before) the civic-2018-service since its path is ( /* ) and would match before any new services in the staging-2018.civicpdx.org domain.**
 
 The above requirement are be the same for the civic-2017 service if any new services are added to its domain (2017.civicpdx.org)
-
-Most of the 2017 services priorities are historical and will be left alone. Some have changed to work with the full sub-domain of services at both the route53 (DNS) level and ELB levels.
 
 | Year | Service Name                     | CPU  |  Mem.  |  Port   | Priority |           Host            | Path                       |
 | :--: | :------------------------------- | :--: | :----: | :-----: | :------: | :-----------------------: | :------------------------- |

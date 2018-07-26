@@ -14,8 +14,8 @@ For leader of other teams, Here is what we are needing your help:
 
 ## 2. How to...(for developers)
 
-* [Upload files less than 5GB in size to AWS S3](https://github.com/hackoregon/civic-devops/blob/s3-upload-guides/docs/HOWTO-upload-small-files-to-S3.md)
-* [Upload files 5GB or greater to AWS S3](https://github.com/hackoregon/civic-devops/blob/s3-upload-guides/docs/HOWTO-upload-large-files-to-S3.md)
+* [Upload files less than 5GB in size to AWS S3](https://github.com/hackoregon/civic-devops/blob/master/docs/HOWTO-upload-small-files-to-S3.md)
+* [Upload files 5GB or greater to AWS S3](https://github.com/hackoregon/civic-devops/blob/master/docs/HOWTO-upload-large-files-to-S3.md)
 * [Create a backup that complies with HackO's new database creation flow](https://github.com/hackoregon/civic-devops/blob/master/docs/HOWTO-create-backup-for-new-database-creation.md)
 * [Run Docker on MacOS with Docker Toolbox](https://github.com/hackoregon/devops-17/blob/master/HOWTO%20Guides/HOWTO-Docker-on-OSX-with-Docker-Toolbox.md)
 * [View Travis build logs](https://github.com/hackoregon/devops-17/blob/master/HOWTO%20Guides/HOWTO-Travis-view-build-logs.md)

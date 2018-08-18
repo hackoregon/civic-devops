@@ -4,7 +4,7 @@ Although the AWS CLI can be used for this, the easiest means to upload files to 
 
 To access the S3 console, login to the Hack Oregon account console (https://hacko.signin.aws.amazon.com/console) as a user that has S3 read/write privileges.  Hack Oregon project leads should have this access.
 
-On upper left of console click the services dropdown and select S3 under Storage to bring up the S3 console. The Hack Oregon S3 bucket list will be displayed. Click on the `hacko-archive` bucket to display the list of sub-folders.
+On upper left of console click the services dropdown and select S3 under Storage to bring up the S3 console. The Hack Oregon S3 bucket list will be displayed. Click on the `hacko-data-archive` bucket to display the list of sub-folders.
 
 Click on your projects archive folder (e.g. 2018-transportation-systems ) - you will see a list of files that exist in the folder.  Make sure the name of the file(s) you are going to upload do not conflict with any existing files as you will overwrite the existing file(s).
 

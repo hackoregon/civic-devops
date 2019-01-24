@@ -11,6 +11,7 @@ docker ps --format "{{.Names}}"  |  xargs docker stats  $1
 ```
 
 ## From ECS console
+Here's a wild idea
 
 You can observe the current consumption by all services (containers) at once by reviewing the ECS > Clusters page in AWS console, e.g.
 https://us-west-2.console.aws.amazon.com/ecs/home?region=us-west-2#/clusters

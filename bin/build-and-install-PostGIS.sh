@@ -634,3 +634,7 @@ ldconfig
 cd /usr/local/src/
 
 echo "Install of POSTGIS completed"
+echo "Try one of these techniques to verify POSTGIS is working correctly:"
+echo ""
+echo "Yse the \dx command from POSTGRES prompt - once you've switched context to a specific database - to verify which extensions are enabled on that database"
+echo "Try a query such as SELECT st_distance(st_makepoint(42.636002, -78.042527)::geography, st_makepoint(42.582562, -77.941819)::geography;"

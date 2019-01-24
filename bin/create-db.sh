@@ -33,6 +33,7 @@ if [ "$#" -eq 3 ]; then
 	sudo -u postgres psql -c ${SET_PWD_COMMAND}
 elif [ "$#" -eq 0 ]; then
 	# Running interatively (no arguments)
+	echo "Enter the name of the database and username of that database's owner"
 	echo 'NOTE: the database naming convention is (without bracket): <the project name>-<data purpose>'
 	read -p "Database name: " DB_NAME
 	read -p "Username: " USERNAME

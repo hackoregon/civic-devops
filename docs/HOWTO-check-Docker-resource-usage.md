@@ -1,6 +1,6 @@
 # HOWTO Check Docker resource usage
 
-## From EC2 host OS via ssh
+## Check Memory and CPU from EC2 host OS via ssh
 
 This is the most accurate way to determine how much memory should be allocated to each ECS service in the CloudFormation `service.yaml` template's TaskDefinition > Properties > ContainerDefinitions > Memory setting.
 
@@ -12,6 +12,7 @@ docker ps --format "{{.Names}}"  |  xargs docker stats  $1
 
 ## From ECS console
 Here's a wild idea
+## Check Memory and CPU from ECS console
 
 You can observe the current consumption by all services (containers) at once by reviewing the ECS > Clusters page in AWS console, e.g.
 https://us-west-2.console.aws.amazon.com/ecs/home?region=us-west-2#/clusters
@@ -22,3 +23,10 @@ https://us-west-2.console.aws.amazon.com/ecs/home?region=us-west-2#/clusters/hac
 The **CPUUtilization** and **MemoryUtilization** graphs give an historical view for the last ~24 hours of how that service's containers are averaging out across the n number of Tasks.
 
 This is a quick way to get a sense of whether the containers are getting close to their max allocation enough that might explain why you might be seeing them be deemed "unhealthy" by ALB and getting recycled.
+
+## Check Data Volume from EC2 host via ssh
+The data volume is where Docker stores all the images it downloads before launching a new ECS task.
+
+```shell
+docker info | grep "Data Space"
+```

@@ -8,8 +8,9 @@
 * **upload-and-ssh-into-ec2.sh**: run this script to `scp` all files in the current directory and `ssh` into the designated SSH-enabled host
 
 Order of operations, from scratch:
-1. **create-db.sh** - create an EC2 VM (along with **ec2-profile-database-development.sh**)
+1. **create-ec2-machine-database.sh** - create an EC2 VM (using **ec2-profile-database-development.sh** to set the unique settings for this database)
 2. **upload-and-ssh-into-ec2.sh** - uploads all scripts to EC2 VM
 3. **create-database-development.sh** - installs and configures PostgreSQL database service
 4. **build-and-install-PostGIS.sh** - adds PostGIS functionality to PostgreSQL
-5. **create-db.sh** - creates database instances on the PostgreSQL/PostGIS service
+5. **create-db.sh** - creates individual database instances on the PostgreSQL/PostGIS service
+6. **grant-readonly-access-for-PostgreSQL-user.sh** - takes an additional read-only psql user and grants it only read-only access to the specified database

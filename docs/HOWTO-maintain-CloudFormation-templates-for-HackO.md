@@ -10,6 +10,6 @@ So here's the workflow that keeps us in sync between GitHub and S3 (and hopefull
 4. add/commit/push your changes, then generate a PR.
 5. Merge the PR.
 6. `git checkout master` and `git pull` to make sure your filesystem is in sync with the current version of our repo's templates.
-7. `aws s3 cp . s3://hacko-infrastructure-cfn --recursive` to sync the repo's contents with the S3 bucket.
+7. `aws s3 sync . s3://hacko-infrastructure-cfn --exclude ".git/*"` to sync the repo's contents with the S3 bucket.
 8. Go make your CloudFormation changeset with the current code, and execute it.
 9. (Cross fingers that the changeset deploys without rollback.)

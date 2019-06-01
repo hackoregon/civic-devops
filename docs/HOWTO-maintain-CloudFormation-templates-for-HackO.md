@@ -13,3 +13,4 @@ So here's the workflow that keeps us in sync between GitHub and S3 (and hopefull
 7. `aws s3 sync . s3://hacko-infrastructure-cfn --exclude ".git/*"` to sync the repo's contents with the S3 bucket.
 8. Go make your CloudFormation changeset with the current code, and execute it.
 9. (Cross fingers that the changeset deploys without rollback.)
+10. If your attempts to deploy keep getting met with rollback after rollback, and especially if the errors aren't consistent, it's a good idea to wipe all the files from the S3 bucket and re-sync from source. (We have this problem periodically where the files get out of sync - something in `aws s3 sync` isn't as reliable as we expected - and a wipe and full sync seems to do the trick.)

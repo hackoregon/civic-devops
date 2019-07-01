@@ -32,7 +32,7 @@ Since we have tried to be consistent, there are bound to be a few likely stickin
 
 **Problem:** Due to changes required for Fargate task definitions, the AWS user used by Travis for a repo may not have all the necessary permissions.
 **What to look for:** An error message in Travis, hidden under the `deploy.sh` collapsed section that mentions "AWS User <user> doesn't have required permission <permission>".
-**Solution:** Update the user in AWS to have the missing permission. It is likely `iam:PassRole` if anything. 
+**Solution:** Update the user in AWS to have the missing permission. It is likely `iam:PassRole` if anything. Since `iam` write permissions are locked down, use the #team-infra Slack channel to request the permission change. Make sure to include both the AWS user name and the missing permission.
 
 ### Providing all required configuration to containers
 

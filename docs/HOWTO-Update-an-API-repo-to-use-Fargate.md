@@ -50,3 +50,4 @@ You know that the migration is successful once a Travis build on the master bran
 4. The newest tasks for the service in ECS in a running state.
 5. No error messages in CloudWatch for the newly running task.
 6. Passing health check log messages in CloudWatch for the newly running task.
+7. Browse to https://service.civicpdx.org/{service_name} to verify the API container is successfully responding to external requests.

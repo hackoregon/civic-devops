@@ -22,3 +22,8 @@ For example, when adding a new Service to the ECS cluster `hacko-integration`, w
 - on the far-right column labelled Replacement, in most cases you should see nothing labelled “True”, and the Add entries - for any new services being added - should have *no* value
 - if that’s what you’re seeing, then hit the Execute button at the top right and cross your fingers.
 - if this succeeds, then when you click on the parent stack listing on the CloudFormation page, under the Events section you should see `UPDATE_COMPLETE` status for any existing services, and `CREATE_COMPLETE` for any newly-added services
+
+## Couple of Warnings
+
+1. Do NOT to execute the change-set if you do not have full administrator privileges as pain will ensue.
+2. Do NOT use the update button and go down that path as it does not create a change-set that can be reviewed (and either deleted or executed ) but does the changes immediately - unless you *want* to make such changes immediately.

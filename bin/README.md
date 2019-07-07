@@ -5,7 +5,7 @@
 * **create-db.sh**: after installing PostgreSQL database service, configured and running, run this script from an SSH shell on the VM to create each new database instance (note: if your database instance requires PostGIS, run `build-and-install-PostGIS.sh` before restoring the database or generating the database schema)
 * **create-ec2-machine-database.sh**: run this script from a local \*NIX (Mac, Linux or Ubuntu on Win10) shell, where `awscli` is installed and AWS credentials are available, to create a new EC2 VM from the input `profile.sh` configuration
 * **ec2-profile-database-development.sh**: use this script as the `profile.sh` input configuration for the `create-ec2-machine-database.sh` script, to create the central PostgreSQL database host for Hack Oregon's 2018 project season
-* **ssm-parameters-upload.py**: 
+* **ssm-parameters-upload.py**: run this script to upload a bulk array of new SSM Parameter Store parameters
 * **upload-and-ssh-into-ec2.sh**: run this script to `scp` all files in the current directory and `ssh` into the designated SSH-enabled host
 
 Order of operations, from scratch:

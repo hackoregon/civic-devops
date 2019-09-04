@@ -5,7 +5,7 @@ title: 'Service Request'
 assignees: ''
 ---
 
-Instructions: Replace text below with details corresponding to your story
+Instructions: Replace text below with details corresponding to your issue
 
 **TEAM NAME:** Enter Name  
 **PRIORITY (1-5):** Enter your priority  

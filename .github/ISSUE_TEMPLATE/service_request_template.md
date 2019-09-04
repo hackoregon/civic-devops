@@ -3,6 +3,7 @@ name: Service Request Template
 about: Template for requests or changes to current backend services or assistance with troubleshooting
 title: 'Service Request'
 assignees: ''
+labels: support-request
 ---
 
 Instructions: Replace text below with details corresponding to your issue

@@ -36,6 +36,8 @@ P5: This is an idea that doesn't pertain to an active project
 
 > 1. I made a request to https://www.exampleapiservice.com  
 > 2. I waited for response  
+
+
 > Expected: I got data  
 > Actual: I got unicorns  
 

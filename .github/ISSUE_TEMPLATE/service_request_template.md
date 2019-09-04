@@ -7,16 +7,16 @@ assignees: ''
 
 Instructions: Replace text below with details corresponding to your story
 
-**TEAM NAME:** Enter Name
-**PRIORITY (1-5):** Enter your priority
+**TEAM NAME:** Enter Name  
+**PRIORITY (1-5):** Enter your priority  
 
 PRIORITY KEY - DELETE BEFORE SAVING ISSUE
 
-P1: This is a production outage and needs attention ASAP
-P2: This is preventing development
-P3: This needs to be fixed but development isn't blocked
-P4: I need assistance at some point on an active project
-P5: This is an idea that doesn't pertain to an active project
+P1: This is a production outage and needs attention ASAP  
+P2: This is preventing development  
+P3: This needs to be fixed but development isn't blocked  
+P4: I need assistance at some point on an active project  
+P5: This is an idea that doesn't pertain to an active project  
 
 **DO NOT INCLUDE ANY SECRETS IN THIS REQUEST. IT IS PUBLICLY ACCESSIBLE**
 

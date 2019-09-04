@@ -30,12 +30,14 @@ P5: This is an idea that doesn't pertain to an active project
 
 **Recreation Steps**
 
-> What are the steps you followed to create this error. Be specific. IE:
+> What are the steps you followed to create this error.   
 
-> 1. I made a request to https://www.exampleapiservice.com
-> 2. I waited for response
-> Expected: I got data
-> Actual: I got unicorns
+> Be specific. IE:
+
+> 1. I made a request to https://www.exampleapiservice.com  
+> 2. I waited for response  
+> Expected: I got data  
+> Actual: I got unicorns  
 
 **Code Snippets**
 

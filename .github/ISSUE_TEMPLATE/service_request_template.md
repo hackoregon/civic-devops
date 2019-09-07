@@ -29,7 +29,7 @@ P5: This is an idea that doesn't pertain to an active project
 
 > Can you provide the error message or other logs which indicate the error. Examples: Browser's Javascript Console, AWS CloudWatch logs, terminal output. Please provide in code blocks
 
-**Recreation Steps**
+**Reproduction Steps**
 
 > What are the steps you followed to create this error.   
 > Be specific. IE:

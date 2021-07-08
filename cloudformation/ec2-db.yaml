@@ -1,0 +1,107 @@
+# Itention:
+# Create a ec2 instance that has read permission to the existing s3 instance(s)
+
+# USAGE:
+# Run:
+#   aws cloudformation create-stack --stack-name <stack name here> --template-body file:///absolute/path/to/this-file.yaml --capabilities CAPABILITY_NAMED_IAM
+
+# PREREQUISITES:
+# - The IAM role for this instance must already exist
+
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'AWS CloudFormation to create a ec2 instance that has read permission to the existing s3 instance(s)'
+
+Parameters:
+
+    InstanceType:
+        Description: Instance type used to build the machine(s)
+        Type: String
+        Default: t2.micro
+
+    ImageId:
+        Description: AMI ID used to build the machine(s)
+        Type: String
+        Default: ami-7f43f307
+
+    AvailabilityZone:
+        Description: Avalaibility Zone to deploy within (different than region)
+        Type: String
+        Default: us-west-2a
+
+    SubnetId:
+        Description: Subnet's ID to be located at
+        Type: String
+        Default: subnet-8794fddf
+
+    SecurityGroupId:
+        Description: The Security Groups to use for the EC2 hosts
+        Type: String
+        Default: sg-28154957
+
+Resources:
+
+  DBInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro # !Ref InstanceType
+      ImageId: ami-7f43f307 # !Ref ImageId
+      SecurityGroupIds:
+      -
+        sg-28154957 # !Ref SecurityGroupId
+      AvailabilityZone: us-west-2a # !Ref AvailabilityZone
+      SubnetId: subnet-8794fddf # !Ref SubnetId
+      IamInstanceProfile: 
+        !Ref InstanceProfile
+      BlockDeviceMappings:
+      -
+        DeviceName: /dev/sdb # !Ref DeviceName
+        Ebs:
+          VolumeType: gp2 # !Ref VolumeType
+          VolumeSize: 8 # !Ref VolumeSize
+          DeleteOnTermination: False # True # !Ref DeleteOnTermination
+      KeyName: hackoregon-2018-database-dev-env # !Ref KeyName
+      Tags:
+      -
+        Key: Name
+        Value: DB # !Ref InstanceName
+
+  # Role:
+  #   Type: AWS::IAM::Role
+  #   Properties:
+  #     RoleName: db-role
+  #     AssumeRolePolicyDocument:
+  #       Version: '2012-10-17'
+  #       Statement:
+  #       - Effect: Allow
+  #         Principal:
+  #           Service:
+  #           - ec2.amazonaws.com
+  #         Action:
+  #         - sts:AssumeRole
+  #     Path: "/"
+  #     #Policies:
+  #     #  - !Ref RolePolicies
+
+  # RolePolicies:
+  #   Type: AWS::IAM::Policy
+  #   Properties:
+  #     PolicyName: ec2-read-s3-policy
+  #     PolicyDocument:
+  #       Version: '2012-10-17'
+  #       Statement:
+  #       - Effect: Allow
+  #         Action: 
+  #           - "s3:GetObject"
+  #           - "s3:ListBucket"
+  #         Resource: "arn:aws:s3:::hacko-data-archive/*"
+  #     Roles:
+  #     - !Ref Role
+      
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Path: "/"
+      Roles:
+        # - !Ref Role
+        - db-role

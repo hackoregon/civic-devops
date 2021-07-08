@@ -14,11 +14,9 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-EC2PROFILE=$2 # Source EC2 specs from a separate file
-# The $EC2PROFILE must contain the following variables (values are merely just example)
-#
+# Source EC2 specs from a separate file
+# The ./ec2-profile.sh should contain the following variables
 # DEVICENAME='/dev/sdb'
-# DELETEONTERM='true'
 # IMAGEID='ami-7f43f307'
 # INSTANCETYPE='t2.micro'
 # KEYNAME='hackoregon-2018-database-dev-env'
@@ -26,8 +24,8 @@ EC2PROFILE=$2 # Source EC2 specs from a separate file
 # SECURITYGROUPIDS='sg-28154957'
 # SUBNETID='subnet-8794fddf'
 # VOLUMESIZE='8'
-# VOLUMETYPE='gp2'
 
+EC2PROFILE=$2
 INSTANCE_ID=
 INSTANCE_ID_FILE='./tmp_instance_id'
 INSTANCE_NAME=$1
@@ -44,7 +42,7 @@ aws ec2 run-instances \
    --security-group-ids $SECURITYGROUPIDS \
    --subnet-id $SUBNETID\
    --region $REGION \
-   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":$VOLUMESIZE,\"VolumeType\":\"$VOLUMETYPE\",\"DeleteOnTermination\":$DELETEONTERM}}]" \
+   --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":8,\"VolumeType\":\"gp2\",\"DeleteOnTermination\":true}}]" \
    --tag-specifications $TAG_SPECS \
    --query 'Instances[0].InstanceId' \
     > $INSTANCE_ID_FILE
